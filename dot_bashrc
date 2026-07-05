@@ -1,0 +1,27 @@
+# ~/.bashrc
+
+# If not running interactively, don't do anything.
+case $- in
+    *i*) ;;
+      *) return ;;
+esac
+
+# Sane default umask for interactive shells
+[ "$(umask)" = 0000 ] && umask 022
+
+shopt -s checkwinsize
+
+# Put user bin dirs first on PATH, idempotently.
+case ":$PATH:" in
+    *":$HOME/.local/bin:"*) ;;
+    *) PATH="$HOME/.local/bin:$HOME/bin:$PATH" ;;
+esac
+export PATH
+
+# Load personal config in numeric order.
+if [ -d "$HOME/.bashrc.d" ]; then
+    for rc in "$HOME"/.bashrc.d/*.sh; do
+        [ -r "$rc" ] && . "$rc"
+    done
+    unset rc
+fi
