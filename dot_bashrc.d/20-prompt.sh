@@ -43,7 +43,7 @@ esac
 
 __prompt_command_prepend '__pure_update_prompt_color'
 
-FIRST_LINE="${CYAN}\w \n"
+FIRST_LINE="${CYAN}\w${MAGENTA}\$(__git_ps1 ' (%s)')${RESET} \n"
 # Do not inline $pure_prompt_color directly here (raw expansion instead of
 # \[...\] causes bash to miscount the prompt width and corrupt in-place
 # history editing with the up-arrow key) — keep it as a deferred \${...} ref.
