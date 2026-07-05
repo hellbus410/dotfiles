@@ -27,3 +27,4 @@ alias v="$EDITOR"
 alias k='kubectl'
 alias h='helm'
 alias t='tailscale'
+alias g='git'
