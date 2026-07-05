@@ -1,0 +1,16 @@
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /usr/share/1password/op-ssh-sign
+[commit]
+	gpgsign = true
+[user]
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE3zzd7c8dpozDTV9MRJ5o1bsuaGLdfqzxt8w9DgSVWU
+	name = Yury A.
+	email = Atnazhev.Yu@pm.me
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
+[core]
+	editor = nvim

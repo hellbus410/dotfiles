@@ -1,0 +1,98 @@
+// ────────── Workspaces ──────────
+// Predefined named workspaces, created at startup.
+// Order is significant: workspace 1 = "Main", 2 = "Game", etc.
+// Your Mod+1..9 keybinds jump to them by number.
+workspace "Main"
+workspace "Game"
+workspace "Chat"
+workspace "Misc"
+
+// ────────── Window-to-workspace rules ──────────
+
+// Block out password managers from screencasts.
+window-rule {
+    match app-id=r"1password"
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screen-capture"
+}
+
+
+// Main: browser, notes.
+window-rule {
+    match app-id="zen"
+    match app-id="obsidian"
+    open-on-workspace "Main"
+}
+
+// Game: Steam and Heroic.
+window-rule {
+    match app-id="steam"
+    match app-id="lutris"
+    open-on-workspace "Game"
+}
+
+
+// Steam notification fix
+//window-rule {
+//    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+//    default-floating-position x=10 y=10 relative-to="bottom-right"
+//}
+
+// Chat: Discord (Vesktop) and Telegram.
+// Telegram's app-id is reverse-domain notation, so we use a regex anchor.
+window-rule {
+    match app-id="vesktop"
+    match app-id=r#"^org\.telegram\.desktop$"#
+    match app-id=r#"^org\.signal\.Signal$"#
+    match app-id=r#"^im\.riot\.Riot$"#
+    match app-id=r#"^org\.gnome\.Fractal$"#
+    
+    default-column-width { proportion 0.3333; }
+    open-on-workspace "Chat"
+}
+
+// Misc: Spotify and other secondary apps.
+window-rule {
+    match app-id="spotify"
+    default-column-width { proportion 0.3333; }
+    open-on-workspace "Misc"
+}
+
+// ────────── Default column widths ──────────
+
+// "Main"-sized apps:
+window-rule {
+    match app-id="zen"
+    match app-id="brave"
+    default-column-width { proportion 0.5; }
+}
+
+// "Small"-sized apps:
+window-rule {
+    match app-id="foot"
+    match app-id="obsidian"
+    match app-id=r#"^org\.gnome\.Nautilus$"#
+    match app-id="1password"
+    match app-id="Spotify"
+    match app-id="steam"
+    match app-id="lutris"
+    match app-id="valent"
+    match app-id=r#"^brave-.*-Default$"#
+    default-column-width { proportion 0.25; }
+}
+
+// PWA resize
+window-rule {
+    //Proton Mail
+    match app-id=r#"^me\.proton\.Mail$"#
+    default-column-width { proportion 0.3333; }
+}
+
+// ────────── Visual ──────────
+// Round all window corners and clip content inside that shape.
+window-rule {
+    geometry-corner-radius 20
+    clip-to-geometry true
+}

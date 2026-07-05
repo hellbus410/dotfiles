@@ -1,0 +1,33 @@
+# Amnezia
+Host 188.190.4.106
+	IdentityFile ~/.ssh/pubkeys/awg.pub
+	IdentitiesOnly yes
+
+# Routers
+Host 10.41.13.1 10.41.13.2 10.41.13.3 10.41.13.4
+	IdentityFile ~/.ssh/pubkeys/routers.pub
+	IdentitiesOnly yes
+
+# Homelab
+Host alfheim* ah-*
+	IdentityFile ~/.ssh/pubkeys/homelab.pub
+	IdentitiesOnly yes
+
+# Git
+Host github.com gitlab.com
+	IdentityFile ~/.ssh/pubkeys/gitsi.pub
+	IdentityFile ~/.ssh/pubkeys/gitau.pub
+	IdentitiesOnly yes
+
+# Private
+Host *
+	IdentityFile ~/.ssh/pubkeys/private.pub
+	IdentitiesOnly yes
+
+# old Private
+Host *
+	IdentityFile ~/.ssh/pubkeys/old.pub
+	IdentitiesOnly yes
+
+Host * 
+	IdentityAgent ~/.1password/agent.sock
