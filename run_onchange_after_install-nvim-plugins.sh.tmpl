@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Installs Neovim's vim.pack plugins and moves them to the commits in the lockfile.
+# Re-runs whenever the lockfile changes: {{ include "dot_config/nvim/nvim-pack-lock.json" | sha256sum }}
+set -euo pipefail
+
+nvim --headless -c "lua vim.pack.update(nil, { target = 'lockfile', force = true })" -c qa

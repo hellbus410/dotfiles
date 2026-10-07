@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Installs the @plugin entries of tmux.conf through TPM.
+# Re-runs whenever tmux.conf changes: {{ include "dot_config/tmux/tmux.conf" | sha256sum }}
+set -euo pipefail
+
+# TPM reads its plugin path from the tmux server's environment. With no server
+# running, tmux.conf's `run -b` has not set it yet, so pass it in: a new server
+# inherits it from here; a running server keeps its own (the same path).
+export TMUX_PLUGIN_MANAGER_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/tmux/plugins/"
+
+"${TMUX_PLUGIN_MANAGER_PATH}tpm/bin/install_plugins"
