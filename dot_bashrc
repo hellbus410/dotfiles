@@ -1,0 +1,28 @@
+# ~/.bashrc
+
+# Interactive shells only.
+case $- in
+    *i*) ;;
+      *) return ;;
+esac
+
+# System-wide settings: completion and /etc/profile.d. Fedora's bash reads
+# this file only when told to; NixOS's reads it itself and guards against a
+# second read.
+[ -r /etc/bashrc ] && . /etc/bashrc
+
+case ":$PATH:" in
+    *":$HOME/.local/bin:"*) ;;
+    *) PATH="$HOME/.local/bin:$PATH" ;;
+esac
+export PATH
+
+for rc in "$HOME"/.bashrc.d/*.sh; do
+    [ -r "$rc" ] && . "$rc"
+done
+unset rc
+
+# Aliases shared with zsh.
+_aliases="${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliases.sh"
+[ -r "$_aliases" ] && . "$_aliases"
+unset _aliases

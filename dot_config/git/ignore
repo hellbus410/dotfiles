@@ -1,0 +1,9 @@
+# Editor backup files.
+*~
+
+# Claude Code: personal settings and notes, not meant to be shared.
+.claude/settings.local.json
+CLAUDE.local.md
+
+# Python bytecode cache.
+__pycache__/
