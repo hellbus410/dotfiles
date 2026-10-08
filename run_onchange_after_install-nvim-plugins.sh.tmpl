@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-# Installs Neovim's vim.pack plugins and moves them to the commits in the lockfile.
+# Installs Neovim's vim.pack plugins and moves them to the commits in the lockfile,
+# then updates the Tree-sitter parsers to the versions that nvim-treesitter commit expects.
 # Re-runs whenever the lockfile changes: {{ include "dot_config/nvim/nvim-pack-lock.json" | sha256sum }}
 set -euo pipefail
 
 nvim --headless -c "lua vim.pack.update(nil, { target = 'lockfile', force = true })" -c qa
+nvim --headless -c "lua require('nvim-treesitter').update():wait(300000)" -c qa
