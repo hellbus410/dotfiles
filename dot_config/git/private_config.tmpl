@@ -1,7 +1,11 @@
 [gpg]
 	format = ssh
 [gpg "ssh"]
+{{- if eq .chezmoi.osRelease.id "nixos" }}
+	program = /run/current-system/sw/bin/op-ssh-sign
+{{- else }}
 	program = /opt/1Password/op-ssh-sign
+{{- end }}
 [commit]
 	gpgsign = true
 [tag]
