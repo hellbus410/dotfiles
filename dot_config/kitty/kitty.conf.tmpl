@@ -1,0 +1,28 @@
+# Ported from foot.ini
+
+font_family      Maple Mono NF
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+font_size        14
+
+cursor_shape beam
+
+# Hide the pointer while typing (foot: hide-when-typing)
+mouse_hide_wait -1
+
+scrollback_lines 20000
+
+# Behave like foot: no close confirmation, no bell
+confirm_os_window_close 0
+enable_audio_bell       no
+
+# Don't restore the last window size on launch
+remember_window_size no
+
+background_opacity 0.9
+background         #060a0e
+{{- if lookPath "dms" }}
+
+include dank-theme.conf
+{{- end }}

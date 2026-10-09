@@ -8,3 +8,6 @@
 .config/DankMaterialShell
 .config/niri/dms.kdl
 {{- end }}
+{{- if not (lookPath "kitty") }}
+.config/kitty
+{{- end }}
