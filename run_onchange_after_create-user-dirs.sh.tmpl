@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Creates the directories named in user-dirs.dirs, renaming the English default
+# (~/Downloads and so on) when that exists instead. Without them, xdg-user-dirs-update
+# resets the missing entries to $HOME at the next login.
+# Re-runs whenever user-dirs.dirs changes: {{ include "dot_config/private_user-dirs.dirs" | sha256sum }}
+set -euo pipefail
+
+source "${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs"
+
+declare -A defaults=(
+    [DESKTOP]=Desktop [DOWNLOAD]=Downloads [TEMPLATES]=Templates [PUBLICSHARE]=Public
+    [DOCUMENTS]=Documents [MUSIC]=Music [PICTURES]=Pictures [VIDEOS]=Videos
+)
+
+for name in "${!defaults[@]}"; do
+    var="XDG_${name}_DIR"
+    target="${!var:-}"
+    target="${target%/}"
+    old="$HOME/${defaults[$name]}"
+
+    [[ -z "$target" || "$target" == "$HOME" ]] && continue
+
+    if [[ -e "$target" ]]; then
+        [[ -d "$old" && "$old" != "$target" ]] && echo "user-dirs: both $old and $target exist; merge them by hand" >&2
+        continue
+    fi
+
+    if [[ -d "$old" ]]; then
+        mv -- "$old" "$target"
+        echo "user-dirs: renamed $old to $target"
+    else
+        mkdir -p -- "$target"
+        echo "user-dirs: created $target"
+    fi
+done
