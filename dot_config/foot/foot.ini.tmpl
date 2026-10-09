@@ -1,0 +1,29 @@
+term=xterm-256color
+title=foot
+locked-title=yes
+app-id=foot
+dpi-aware=yes
+
+font=Maple Mono NF:size=14
+font-bold=Maple Mono NF:size=14
+font-italic=Maple Mono NF:size=14
+font-bold-italic=Maple Mono NF:size=14
+
+[cursor]
+style=beam
+
+[mouse]
+hide-when-typing=yes
+
+[scrollback]
+lines=20000
+
+{{- if lookPath "dms" }}
+
+[main]
+include=~/.config/foot/dank-colors.ini
+{{- end }}
+
+[colors-dark]
+alpha=0.9
+background=060a0e

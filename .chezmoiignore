@@ -1,0 +1,10 @@
+{{- if not (lookPath "foot") }}
+.config/foot
+{{- end }}
+{{- if not (lookPath "niri") }}
+.config/niri
+{{- end }}
+{{- if not (lookPath "dms") }}
+.config/DankMaterialShell
+.config/niri/dms.kdl
+{{- end }}

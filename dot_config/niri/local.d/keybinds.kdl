@@ -1,0 +1,186 @@
+binds {
+
+    // ────────── Hotkey overlay ──────────
+    Mod+Shift+ESCAPE                     { show-hotkey-overlay; }
+
+    // ────────── Applications ──────────
+    Mod+Return                          hotkey-overlay-title="Open Terminal in Main tmux session" repeat=false { spawn "foot" "-e" "tmux" "new" "-A" "-s" "main"; }
+    Mod+ALT+Return                      hotkey-overlay-title="Open Terminal" repeat=false { spawn "foot"; }
+    Mod+E                               hotkey-overlay-title="Open File Manager" repeat=false { spawn "nautilus"; }
+    Mod+ALT+E                           hotkey-overlay-title="Open yazi" repeat=false { spawn "foot" "-e" "yazi"; }
+    Mod+P                               hotkey-overlay-title="Open 1Password" { spawn "1password"; }
+    Mod+B                               hotkey-overlay-title="Open Browser: Zen" { spawn "flatpak" "run" "app.zen_browser.zen"; }
+    Mod+ALT+B                           hotkey-overlay-title="Open Browser: Brave" { spawn "flatpak" "run" "com.brave.Browser"; }
+    Mod+O                               hotkey-overlay-title="Open Obsidian" repeat=false { spawn "flatpak" "run" "md.obsidian.Obsidian"; }
+    Mod+S                               hotkey-overlay-title="Open Spotify" { spawn "flatpak" "run" "com.spotify.Client"; }
+    Mod+T                               hotkey-overlay-title="Open Telegram" { spawn "flatpak" "run" "org.telegram.desktop"; }
+    Mod+D                               hotkey-overlay-title="Open Discord" { spawn "flatpak" "run" "dev.vencord.Vesktop"; }
+    Mod+M                               hotkey-overlay-title="Open Mail" { spawn "flatpak" "run" "me.proton.Mail"; }
+    Mod+A                               hotkey-overlay-title="Open Claude" { spawn "flatpak" "run" "com.brave.Browser" "--app-id=fmpnliohjhemenmnlpbfagaolkdacoja"; }
+    Mod+ALT+A                           hotkey-overlay-title="Open Claude Code" repeat=false { spawn "foot" "-e" "tmux" "new" "-A" "-s" "claude"; }
+    //Mod+ALT+A                           hotkey-overlay-title="Open Grok" { spawn "flatpak" "run" "com.brave.Browser" "--app-id=ggjocahimgaohmigbfhghnlfcnjemagj"; }
+    Mod+ALT+R                           hotkey-overlay-title="Open Renshuu" { spawn "flatpak" "run" "com.brave.Browser" "--app-id=ooigkdhpdelnhnmnknbeeajbngilljbe"; }
+    Mod+ALT+G                               hotkey-overlay-title="Open GitHub" { spawn "flatpak" "run" "com.brave.Browser" "--app-id=mjoklplbddabcmpepnokjaffbmgbkkgg"; }
+
+    // ────────── System ──────────
+    ALT+Space                           hotkey-overlay-title="Open App Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    Mod+ALT+L                           hotkey-overlay-title="Lock Screen" { spawn "dms" "ipc" "call" "lock" "lock"; }
+    Mod+Shift+Q                         hotkey-overlay-title="Session Menu" { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
+    Mod+V                               hotkey-overlay-title="Clipboard" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
+    CTRL+Shift+Escape                   hotkey-overlay-title="Open btop" { spawn "foot" "-e" "btop"; }
+
+    // ────────── Media Controls ──────────
+    // allow-when-locked=true lets these work even when the screen is locked.
+    XF86AudioRaiseVolume                allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "increment" "5"; }
+    XF86AudioLowerVolume                allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "decrement" "5"; }
+    XF86AudioMute                       allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "mute"; }
+    XF86AudioMicMute                    allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "micmute"; }
+    XF86AudioNext                       allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "next"; }
+    XF86AudioPrev                       allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "previous"; }
+    XF86AudioPlay                       allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "playPause"; }
+    XF86AudioPause                      allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "playPause"; }
+
+    // ────────── Brightness Controls ──────────
+    XF86MonBrightnessUp                 allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "5"; }
+    XF86MonBrightnessDown               allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "5"; }
+
+    // ────────── Window Movement and Focus ──────────
+    // Q closes the focused window. Niri sends the standard close request;
+    // apps that need to confirm (Obsidian with unsaved changes) prompt.
+    Mod+Q                               repeat=false { close-window; }
+
+    // Arrow keys move focus between columns within the current workspace.
+    // "Column" = vertical strip of windows. Mod+Left/Right = next column.
+    Mod+H                               { focus-column-left; }
+    Mod+Left                            { focus-column-left; }
+    Mod+U                               { focus-window-down; }
+    Mod+Down                            { focus-window-down; }
+    Mod+I                               { focus-window-up; }
+    Mod+Up                              { focus-window-up; }
+    Mod+L                               { focus-column-right; }
+    Mod+Right                           { focus-column-right; }
+
+
+    // Hold Ctrl additionally to MOVE the focused column left/right.
+    Mod+CTRL+H                          { move-column-left; }
+    Mod+CTRL+Left                       { move-column-left; }
+    Mod+CTRL+U                          { move-window-down; }
+    Mod+CTRL+Down                       { move-window-down; }
+    Mod+CTRL+I                          { move-window-up; }
+    Mod+CTRL+Up                         { move-window-up; }
+    Mod+CTRL+L                          { move-column-right; }
+    Mod+CTRL+Right                      { move-column-right; }
+
+    // Combine two windows, current window to below MOVE
+    Mod+BracketLeft                     { consume-or-expel-window-left; }
+    Mod+BracketRight                    { consume-or-expel-window-right; }
+
+    // Jump to first/last column on this workspace.
+    Mod+Home                            { focus-column-first; }
+    Mod+End                             { focus-column-last; }
+
+    // Move the focused column to the first/last position.
+    Mod+CTRL+Home                       { move-column-to-first; }
+    Mod+CTRL+End                        { move-column-to-last; }
+
+    // Move focus between physical monitors (if you have more than one).
+    Mod+Shift+H                         { focus-monitor-left; }
+    Mod+Shift+Left                      { focus-monitor-left; }
+    Mod+Shift+J                         { focus-monitor-down; }
+    Mod+Shift+Down                      { focus-monitor-down; }
+    Mod+Shift+K                         { focus-monitor-up; }
+    Mod+Shift+Up                        { focus-monitor-up; }
+    Mod+Shift+L                         { focus-monitor-right; }
+    Mod+Shift+Right                     { focus-monitor-right; }
+
+    // Move the focused column to another monitor.
+    Mod+Shift+CTRL+H                    { move-column-to-monitor-left; }
+    Mod+Shift+CTRL+Left                 { move-column-to-monitor-left; }
+    Mod+Shift+CTRL+J                    { move-column-to-monitor-down; }
+    Mod+Shift+CTRL+Down                 { move-column-to-monitor-down; }
+    Mod+Shift+CTRL+K                    { move-column-to-monitor-up; }
+    Mod+Shift+CTRL+Up                   { move-column-to-monitor-up; }
+    Mod+Shift+CTRL+L                    { move-column-to-monitor-right; }
+    Mod+Shift+CTRL+Right                { move-column-to-monitor-right; }
+
+    // ────────── Workspace Switching ──────────
+    // Mouse wheel + Mod = switch workspaces vertically.
+    Mod+WheelScrollDown                 { focus-workspace-down; }
+    Mod+J                               { focus-workspace-down; }
+    Mod+Page_Down                       { focus-workspace-down; }
+    Mod+WheelScrollUp                   { focus-workspace-up; }
+    Mod+K                               { focus-workspace-up; }
+    Mod+Page_Up                         { focus-workspace-up; }
+
+    // Same idea but Ctrl additionally moves the focused column with you.
+    Mod+CTRL+WheelScrollDown            { move-column-to-workspace-down; }
+    Mod+CTRL+J                          { move-column-to-workspace-down; }
+    Mod+CTRL+Page_Down                  { move-column-to-workspace-down; }
+    Mod+CTRL+WheelScrollUp              { move-column-to-workspace-up; }
+    Mod+CTRL+K                          { move-column-to-workspace-up; }
+    Mod+CTRL+Page_Up                    { move-column-to-workspace-up; }
+
+    // Horizontal wheel scrolls between columns.
+    Mod+WheelScrollRight                { focus-column-right; }
+    Mod+WheelScrollLeft                 { focus-column-left; }
+    Mod+CTRL+WheelScrollRight           { move-column-right; }
+    Mod+CTRL+WheelScrollLeft            { move-column-left; }
+
+    // Shift+wheel = horizontal column nav even on mice without H wheel.
+    Mod+Shift+WheelScrollDown           { focus-column-right; }
+    Mod+Shift+WheelScrollUp             { focus-column-left; }
+    Mod+CTRL+Shift+WheelScrollDown      { move-column-right; }
+    Mod+CTRL+Shift+WheelScrollUp        { move-column-left; }
+
+    // Jump directly to workspace 1-9 by number.
+    Mod+1                               { focus-workspace 1; }
+    Mod+2                               { focus-workspace 2; }
+    Mod+3                               { focus-workspace 3; }
+    Mod+4                               { focus-workspace 4; }
+    Mod+5                               { focus-workspace 5; }
+    Mod+6                               { focus-workspace 6; }
+    Mod+7                               { focus-workspace 7; }
+    Mod+8                               { focus-workspace 8; }
+    Mod+9                               { focus-workspace 9; }
+
+    // Move the focused column to a specific workspace by number.
+    Mod+CTRL+1                          { move-column-to-workspace 1; }
+    Mod+CTRL+2                          { move-column-to-workspace 2; }
+    Mod+CTRL+3                          { move-column-to-workspace 3; }
+    Mod+CTRL+4                          { move-column-to-workspace 4; }
+    Mod+CTRL+5                          { move-column-to-workspace 5; }
+    Mod+CTRL+6                          { move-column-to-workspace 6; }
+    Mod+CTRL+7                          { move-column-to-workspace 7; }
+    Mod+CTRL+8                          { move-column-to-workspace 8; }
+    Mod+CTRL+9                          { move-column-to-workspace 9; }
+
+    Mod+ALT+F                           { fullscreen-window; }
+    Mod+F                               { maximize-window-to-edges; }
+    Mod+CTRL+F                          { expand-column-to-available-width; }
+    
+    Mod+ALT+T                           { toggle-window-floating; }
+
+    Mod+C                               { center-column; }
+    Mod+CTRL+C                          { center-visible-columns; }
+    
+    // Width adjustments — 10% per keypress.
+    Mod+Minus                           { set-column-width "-10%"; }
+    Mod+Equal                           { set-column-width "+10%"; }
+    // Height adjustments for the focused window within its column.
+    Mod+Shift+Minus                     { set-window-height "-10%"; }
+    Mod+Shift+Equal                     { set-window-height "+10%"; }
+
+    // ────────── Screenshots ──────────
+    // Niri's interactive screenshot UI.
+    Mod+Shift+S                         { screenshot; }
+
+    // ────────── Emergency Escape ──────────
+    // If a fullscreen app grabs all keybinds (game, browser fullscreen
+    // video) and you can't escape, this releases the inhibitor.
+    // allow-inhibiting=false makes the binding work even when the app
+    // is trying to absorb it.
+    Mod+ESCAPE                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+}
+
+    // Disabling Win+Tab and freeing it
+    recent-windows { off; }

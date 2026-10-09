@@ -1,0 +1,46 @@
+input {
+    keyboard {
+        xkb {
+            // Two layouts available: US (default), Russian (toggle target).
+            layout "us"
+
+            // Variant for each layout. Empty = default variant.
+            // ",," = empty US variant, empty RU variant, and a trailing
+            // empty placeholder (XKB allows up to 4 groups).
+            variant ","
+
+            // Group toggle key combination. grp:win_space_toggle = Win+Space.
+            // Alternatives if you want a different toggle:
+            //   grp:alt_shift_toggle   — Alt+Shift
+            //   grp:caps_toggle        — Caps Lock as toggle
+            //   grp:rctrl_toggle       — Right Ctrl
+            //   grp:menu_toggle        — Menu key
+            //options "grp:win_space_toggle"
+        }
+
+        // Enable Num Lock at startup so numpad outputs digits immediately.
+        numlock
+    }
+
+    touchpad {
+        // Tap-to-click: a quick tap = left click without pressing down.
+        tap
+
+        // Reverse scroll direction (macOS/mobile style).
+        natural-scroll
+    }
+
+    // Cursor focuses window under it without clicking.
+    focus-follows-mouse
+
+    // Cursor warp to focus window
+    warp-mouse-to-focus mode="center-xy"
+
+    // Mod+1 twice returns to the previous workspace.
+    workspace-auto-back-and-forth
+}
+
+    // Disable middle-click paste and hignlight to copy behaivior
+clipboard {
+    disable-primary
+}

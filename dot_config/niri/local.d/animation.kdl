@@ -1,0 +1,55 @@
+animations {
+    // Workspace switch (Mod+1/2/3 etc): spring-based for natural feel.
+    // damping-ratio 1.0 = critically damped (no oscillation/bounce).
+    // stiffness controls speed — higher number = snappier transition.
+    // epsilon is the tiny error threshold at which animation "is done".
+    workspace-switch {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+
+    // Window open/close: linear duration + easing curve.
+    // 200ms feels responsive but visible. Curves describe how the
+    // animation accelerates/decelerates:
+    //   ease-out-quad  = starts fast, decelerates (quadratic)
+    //   ease-out-cubic = starts faster, smoother decel (cubic)
+    window-open {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+    window-close {
+        duration-ms 150
+        curve "ease-out-cubic"
+    }
+
+    // Horizontal scroll between columns within a workspace.
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=900 epsilon=0.0001
+    }
+
+    // Moving a window between columns.
+    window-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    // Resizing a window (Mod+Minus / Mod+Equal in your keybinds).
+    window-resize {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+
+    // Config-notification = small UI hint when Niri reloads its config.
+    // damping-ratio < 1 = slight overshoot (the notification gently bounces).
+    config-notification-open-close {
+        spring damping-ratio=0.6 stiffness=1200 epsilon=0.001
+    }
+
+    // Niri's built-in screenshot UI animation.
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+
+    // The overview mode (zoomed-out view of all workspaces).
+    overview-open-close {
+        spring damping-ratio=1.0 stiffness=900 epsilon=0.0001
+    }
+}

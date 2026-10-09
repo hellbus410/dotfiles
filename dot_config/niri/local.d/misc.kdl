@@ -1,0 +1,44 @@
+// Tell client apps not to draw their own decorations — Niri handles them.
+// This is what makes GTK and Qt apps look uniform under Niri.
+prefer-no-csd
+
+// Where Niri's built-in screenshot saves files.
+// `null` = clipboard only, no disk write.
+// To save to disk: "~/Pictures/Screenshots/screenshot-%Y%m%d-%H%M%S.png"
+// (%Y%m%d-%H%M%S is strftime format for year-month-day-hour-minute-second.)
+screenshot-path null
+
+environment {
+    // Electron apps prefer Wayland.
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+
+    // Qt apps render natively in Wayland (skips XWayland).
+    QT_QPA_PLATFORM "wayland"
+
+    // Qt-native windows: no client-side decoration.
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+
+    // Standard XDG session signals — apps know they're in a Niri Wayland
+    // session.
+    XDG_SESSION_TYPE "wayland"
+    XDG_CURRENT_DESKTOP "niri"
+
+    // Qt apps use GTK3's theme engine — keeps Qt and GTK apps visually
+    // consistent.
+    QT_QPA_PLATFORMTHEME "gtk3"
+
+    // Linux Brew path
+    PATH "/home/linuxbrew/.linuxbrew/bin:/usr/local/bin:/usr/bin:/usr/local/sbin"
+}
+
+debug {
+    // DMS uses xdg-activation to raise its own windows (notifications,
+    // popups). This allows that even when the activation token is
+    // technically invalid — required for DMS to behave correctly.
+    honor-xdg-activation-with-invalid-serial
+}
+
+hotkey-overlay {
+    // Don't show the keybind cheat sheet automatically on every login.
+    skip-at-startup
+}

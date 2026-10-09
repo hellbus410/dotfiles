@@ -1,0 +1,38 @@
+layout {
+    // Pixel gap between windows and screen edges.
+    gaps 3
+
+    // Behavior when a column is focused:
+    //   "never"        = focused column stays where it is
+    //   "always"       = always center the focused column
+    //   "on-overflow"  = center only when off-screen
+    center-focused-column "never"
+
+    // Center single column
+    always-center-single-column true
+
+    // Wallpaper layer (DMS) draws through. Niri doesn't paint its own bg.
+    background-color "transparent"
+
+    // Column widths cycled by Niri's default switch-preset-column-width
+    // action (bound to Mod+R by default).
+    // These are fractions of screen width: 1/3, 1/2, 2/3.
+    preset-column-widths {
+        proportion 0.25
+        proportion 0.3333
+        proportion 0.5
+    }
+    
+    default-column-width { proportion 0.25; }
+
+    // Reserved space at screen edges for status bars. Empty {} = none,
+    // because DMS bars use the Wayland layer-shell protocol and don't
+    // need traditional struts.
+    struts {}
+
+    // Focus indicator ring around the active window.
+    focus-ring {
+        width 2 
+    }
+}
+

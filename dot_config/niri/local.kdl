@@ -1,0 +1,9 @@
+// Personal Niri overrides
+// Composed from split files in ./local.d/.
+
+include "local.d/animation.kdl"
+include "local.d/input.kdl"
+include "local.d/keybinds.kdl"
+include "local.d/layout.kdl"
+include "local.d/misc.kdl"
+include "local.d/rules.kdl"
