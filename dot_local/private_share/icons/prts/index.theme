@@ -1,0 +1,6 @@
+# PRTS cursors by Mr. Lei (MIT, see LICENSE): https://github.com/lsy-404/PRTS_cursor
+# Converted from the Windows .cur/.ani files with win2xcur; native size 32.
+# The Arknights theme inherits from this one for the shapes it lacks.
+[Icon Theme]
+Name=PRTS
+Comment=Arknights PRTS cursors by Mr. Lei

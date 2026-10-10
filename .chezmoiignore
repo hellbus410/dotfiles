@@ -19,6 +19,8 @@
 .config/caelestia/hypr-user.lua
 .config/caelestia/hypr-vars.lua
 .config/xdg-desktop-portal-termfilechooser
+.local/share/icons/arknights
+.local/share/icons/prts
 {{- end }}
 {{- if not (lookPath "caelestia") }}
 .config/caelestia/cli.json

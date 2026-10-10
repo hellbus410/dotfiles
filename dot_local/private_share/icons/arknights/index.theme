@@ -1,0 +1,7 @@
+# Arknights cursors by THTH, public domain: https://www.rw-designer.com/cursor-set/arknights
+# Converted from the Windows .cur files with win2xcur. The set has only 4 shapes;
+# the rest (text, wait, resize, …) come from the yellow PRTS theme (prts).
+[Icon Theme]
+Name=Arknights
+Comment=Arknights cursors by THTH
+Inherits=prts
