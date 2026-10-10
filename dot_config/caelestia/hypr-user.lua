@@ -8,6 +8,7 @@
 hl.bind("SUPER + ALT + Return", require("utils.functions").toggle("term"))                                -- default: none | niri: Mod+ALT+Return
 hl.bind("SUPER + P", hl.dsp.exec_cmd("1password"))                                                      -- default: pin window | niri: Mod+P
 hl.bind("SUPER + ALT + B", hl.dsp.exec_cmd("brave-origin"))                                                    -- default: none | niri: Mod+ALT+B
+hl.bind("SUPER + B", hl.dsp.exec_cmd("zen-beta"))                                                    -- default: none | niri: Mod+B
 hl.bind("SUPER + O", hl.dsp.exec_cmd("obsidian"))                                                       -- default: none | niri: Mod+O
 hl.bind("SUPER + T", require("utils.functions").toggle("telegram"))                                       -- default: terminal (scratchpad, see bottom) | niri: Mod+T
 hl.bind("SUPER + M", hl.dsp.exec_cmd("proton-mail"))                                                       -- default: music scratchpad (moved to SUPER + S) | niri: Mod+M
