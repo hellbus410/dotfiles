@@ -14,6 +14,9 @@
 {{- if not (lookPath "yazi") }}
 .config/yazi
 {{- end }}
+{{- if not (lookPath "swayimg") }}
+.config/swayimg
+{{- end }}
 {{- if not (lookPath "Hyprland") }}
 .config/hypr
 .config/caelestia/hypr-user.lua
