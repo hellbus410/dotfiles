@@ -99,7 +99,9 @@ vim.filetype.add({
 --- Language servers ---
 vim.diagnostic.config({ virtual_lines = true })
 
-vim.lsp.enable({
+-- Only enable servers whose binary is installed (they come from nix-conf's packages.nix).
+-- Missing ones are reported once; the list of reported names lives in stdpath("state").
+local servers = {
     "nixd",
     "bashls",
     "ansiblels",
@@ -113,7 +115,48 @@ vim.lsp.enable({
     "taplo",
     "jsonls",
     "systemd_lsp",
-})
+}
+
+-- lspconfig defines these cmds as functions, so the binary can't be read from the config
+local server_bins = {
+    yamlls = "yaml-language-server",
+    jsonls = "vscode-json-language-server",
+}
+
+local reported_file = vim.fs.joinpath(vim.fn.stdpath("state"), "lsp-missing-reported")
+local reported = {}
+if vim.uv.fs_stat(reported_file) then
+    for _, name in ipairs(vim.fn.readfile(reported_file)) do
+        reported[name] = true
+    end
+end
+
+local available, missing, newly_missing = {}, {}, {}
+for _, name in ipairs(servers) do
+    local cmd = vim.lsp.config[name] and vim.lsp.config[name].cmd
+    local bin = server_bins[name] or (type(cmd) == "table" and cmd[1])
+    if bin and vim.fn.executable(bin) == 1 then
+        table.insert(available, name)
+    else
+        table.insert(missing, name)
+        if not reported[name] then
+            table.insert(newly_missing, string.format("%s (%s)", name, bin or "?"))
+        end
+    end
+end
+
+vim.lsp.enable(available)
+
+-- Rewritten every start, so a server that gets installed and later removed is reported again
+vim.fn.writefile(missing, reported_file)
+if #newly_missing > 0 then
+    vim.schedule(function()
+        vim.notify(
+            "Language servers not installed, skipped:\n  " .. table.concat(newly_missing, "\n  "),
+            vim.log.levels.WARN
+        )
+    end)
+end
 
 --- Tree-sitter ---
 local parsers = {
