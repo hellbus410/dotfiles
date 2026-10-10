@@ -1,0 +1,9 @@
+; xdg-desktop-portal-termfilechooser: every file dialog opens yazi in kitty.
+; Routed to by xdg.portal.config.hyprland in ~/nix-conf/modules/desktop.nix.
+; yazi-wrapper.sh ships with the portal; the kitty class gets a floating rule in hypr-user.lua.
+[filechooser]
+cmd=yazi-wrapper.sh
+default_dir=$HOME
+env=TERMCMD=kitty --class termfilechooser --title 'File picker'
+open_mode=suggested
+save_mode=last
