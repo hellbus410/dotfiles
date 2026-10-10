@@ -8,16 +8,16 @@
         "wallpaperEnabled": true
     },
     "bar": {
-        "workspaces": {
-            "specialWorkspaceIcons": [
-                { "name": "special", "icon": "star" },
-                { "name": "communication", "icon": "forum" },
-                { "name": "telegram", "icon": "forum" },
-                { "name": "term", "icon": "terminal" },
-                { "name": "music", "icon": "music_cast" },
-                { "name": "todo", "icon": "checklist" },
-                { "name": "sysmon", "icon": "monitor_heart" }
-            ]
+        "activeWindow": {
+            "compact": false,
+            "inverted": true
+        },
+        "persistent": true,
+        "popouts": {
+            "tray": true
+        },
+        "scrollActions": {
+            "brightness": false
         },
         "statusIcons": [
             {
@@ -29,7 +29,7 @@
                 "id": "audio"
             },
             {
-                "enabled": false,
+                "enabled": true,
                 "id": "microphone"
             },
             {
@@ -50,9 +50,57 @@
             }
         ],
         "tray": {
-            "background": false,
+            "background": true,
             "compact": false,
             "recolour": false
+        },
+        "workspaces": {
+            "occupiedBg": false,
+            "showUnoccupied": false,
+            "specialWorkspaceIcons": [
+                {
+                    "flags": "",
+                    "icon": "star",
+                    "name": "special",
+                    "regex": ""
+                },
+                {
+                    "flags": "",
+                    "icon": "forum",
+                    "name": "communication",
+                    "regex": ""
+                },
+                {
+                    "flags": "",
+                    "icon": "forum",
+                    "name": "telegram",
+                    "regex": ""
+                },
+                {
+                    "flags": "",
+                    "icon": "terminal",
+                    "name": "term",
+                    "regex": ""
+                },
+                {
+                    "flags": "",
+                    "icon": "music_cast",
+                    "name": "music",
+                    "regex": ""
+                },
+                {
+                    "flags": "",
+                    "icon": "checklist",
+                    "name": "todo",
+                    "regex": ""
+                },
+                {
+                    "flags": "",
+                    "icon": "monitor_heart",
+                    "name": "sysmon",
+                    "regex": ""
+                }
+            ]
         }
     },
     "general": {
@@ -74,7 +122,7 @@
     },
     "utilities": {
         "cards": {
-            "recorder": true
+            "recorder": false
         },
         "quickToggles": [
             {
