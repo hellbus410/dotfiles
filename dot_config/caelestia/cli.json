@@ -1,0 +1,40 @@
+{
+    "toggles": {
+        "communication": {
+            "discord": { "enable": false },
+            "whatsapp": { "enable": false },
+            "vesktop": {
+                "enable": true,
+                "match": [{ "class": "vesktop" }],
+                "command": ["vesktop"],
+                "move": true
+            }
+        },
+        "telegram": {
+            "telegram": {
+                "enable": true,
+                "match": [{ "class": "org.telegram.desktop" }],
+                "command": ["Telegram"],
+                "move": true
+            }
+        },
+        "term": {
+            "kitty": {
+                "enable": true,
+                "match": [{ "class": "kitty-scratch" }],
+                "command": ["kitty", "--class", "kitty-scratch"],
+                "move": true
+            }
+        },
+        "music": {
+            "spotify": { "command": ["spotify"] },
+            "feishin": { "enable": false }
+        },
+        "sysmon": {
+            "btop": { "command": ["kitty", "--class", "btop", "-T", "btop", "btop"] }
+        },
+        "todo": {
+            "todoist": { "enable": false }
+        }
+    }
+}

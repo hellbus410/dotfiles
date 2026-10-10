@@ -11,3 +11,15 @@
 {{- if not (lookPath "kitty") }}
 .config/kitty
 {{- end }}
+{{- if not (lookPath "yazi") }}
+.config/yazi
+{{- end }}
+{{- if not (lookPath "Hyprland") }}
+.config/hypr
+.config/caelestia/hypr-user.lua
+.config/caelestia/hypr-vars.lua
+{{- end }}
+{{- if not (lookPath "caelestia") }}
+.config/caelestia/cli.json
+.config/caelestia/shell.json
+{{- end }}

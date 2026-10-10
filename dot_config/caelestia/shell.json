@@ -1,0 +1,110 @@
+{
+    "appearance": {
+        "transparency": {
+            "enabled": false
+        }
+    },
+    "background": {
+        "wallpaperEnabled": true
+    },
+    "bar": {
+        "workspaces": {
+            "specialWorkspaceIcons": [
+                { "name": "special", "icon": "star" },
+                { "name": "communication", "icon": "forum" },
+                { "name": "telegram", "icon": "forum" },
+                { "name": "term", "icon": "terminal" },
+                { "name": "music", "icon": "music_cast" },
+                { "name": "todo", "icon": "checklist" },
+                { "name": "sysmon", "icon": "monitor_heart" }
+            ]
+        },
+        "statusIcons": [
+            {
+                "enabled": true,
+                "id": "lockStatus"
+            },
+            {
+                "enabled": true,
+                "id": "audio"
+            },
+            {
+                "enabled": false,
+                "id": "microphone"
+            },
+            {
+                "enabled": false,
+                "id": "kbLayout"
+            },
+            {
+                "enabled": true,
+                "id": "network"
+            },
+            {
+                "enabled": true,
+                "id": "bluetooth"
+            },
+            {
+                "enabled": true,
+                "id": "battery"
+            }
+        ],
+        "tray": {
+            "background": false,
+            "compact": false,
+            "recolour": false
+        }
+    },
+    "general": {
+        "apps": {
+            "explorer": [
+                "kitty",
+                "yazi"
+            ],
+            "terminal": [
+                "kitty"
+            ]
+        }
+    },
+    "services": {
+        "clockFormat": "TwentyFourHour",
+        "gpuType": "Nvidia",
+        "sensorUnits": "Celsius",
+        "weatherUnits": "Celsius"
+    },
+    "utilities": {
+        "cards": {
+            "recorder": true
+        },
+        "quickToggles": [
+            {
+                "enabled": true,
+                "id": "wifi"
+            },
+            {
+                "enabled": true,
+                "id": "bluetooth"
+            },
+            {
+                "enabled": true,
+                "id": "mic"
+            },
+            {
+                "enabled": true,
+                "id": "settings"
+            },
+            {
+                "enabled": true,
+                "id": "gameMode"
+            },
+            {
+                "enabled": true,
+                "id": "dnd"
+            },
+            {
+                "enabled": true,
+                "id": "vpn"
+            }
+        ]
+    }
+}
