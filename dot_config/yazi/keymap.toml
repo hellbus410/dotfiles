@@ -1,0 +1,5 @@
+# Paste a clipboard image (e.g. a screenshot) as a PNG in the current directory
+[[mgr.prepend_keymap]]
+on   = "<C-v>"
+run  = 'shell -- wl-paste --type image/png > "screenshot-$(date +%%Y%%m%%d-%%H%%M%%S).png"'
+desc = "Paste clipboard image as PNG"
