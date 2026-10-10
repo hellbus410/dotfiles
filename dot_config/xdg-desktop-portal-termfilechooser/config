@@ -4,6 +4,7 @@
 [filechooser]
 cmd=yazi-wrapper.sh
 default_dir=$HOME
-env=TERMCMD=kitty --class termfilechooser --title 'File picker'
+; no spaces inside values: the portal splits on them (--title 'File picker' launched "picker")
+env=TERMCMD=kitty --class termfilechooser
 open_mode=suggested
 save_mode=last
