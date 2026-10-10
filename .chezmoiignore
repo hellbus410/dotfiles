@@ -18,6 +18,7 @@
 .config/hypr
 .config/caelestia/hypr-user.lua
 .config/caelestia/hypr-vars.lua
+.config/xdg-desktop-portal-termfilechooser
 {{- end }}
 {{- if not (lookPath "caelestia") }}
 .config/caelestia/cli.json

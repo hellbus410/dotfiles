@@ -125,6 +125,9 @@ hl.config({
 -- kitty asks to be maximised on launch, which breaks the tiling layout
 -- hl.window_rule({ match = { class = "^kitty(-scratch)?$" }, suppress_event = "maximize" })
 
+-- File dialogs: yazi in kitty (xdg-desktop-portal-termfilechooser), floating like Caelestia's GTK dialogs
+hl.window_rule({ match = { class = "^termfilechooser$" }, tag = "+float_60_70" })
+
 -- Screenshots: region picker straight to the clipboard instead of opening swappy
 hl.bind("SUPER + SHIFT + S", hl.dsp.global("caelestia:screenshotFreezeClip"))                           -- default: same key, opens swappy | niri: Mod+Shift+S
 
