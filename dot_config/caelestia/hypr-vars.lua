@@ -14,7 +14,7 @@ return {
 
     -- Cursor (~/.local/share/icons/arknights, falls back to …/prts; both in chezmoi)
     cursorTheme                = "arknights",                          -- default: sweet-cursors | niri: none
-    cursorSize                 = 32,                                   -- default: 24 | niri: none; the cursors are drawn at 32
+    cursorSize                 = 48,                                   -- default: 24 | niri: none; the cursors are drawn at 32
 
     -- Misc
     volumeStep                 = 5,                                    -- default: 10 | niri: 5
