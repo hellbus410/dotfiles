@@ -154,3 +154,6 @@ end)
 
 -- Telegram has its own scratchpad (SUPER + T); Vesktop keeps the communication one (SUPER + D)
 hl.window_rule({ match = { class = "^org\\.telegram\\.desktop$" }, workspace = "special:telegram" })
+
+-- Workspaces slide up/down instead of left/right (Caelestia: default horizontal slide, same speed and curve)
+hl.animation({ leaf = "workspaces", enabled = true, speed = 5, bezier = "standard", style = "slidevert" })
