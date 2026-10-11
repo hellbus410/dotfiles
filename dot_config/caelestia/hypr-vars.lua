@@ -19,6 +19,14 @@ return {
     -- Misc
     volumeStep                 = 5,                                    -- default: 10 | niri: 5
 
+    -- Window styling: no global transparency (it applied to games too); kitty sets its own background_opacity
+    windowOpacity              = 1,                                    -- default: 0.95 | niri: none
+
+    -- Gaps (niri: gaps 3)
+    windowGapsIn               = 2,                                    -- default: 5 | niri: 3 between windows (gaps_in is per side, so 4 here)
+    windowGapsOut              = 4,                                    -- default: 10 | niri: 3
+    singleWindowGapsOut        = 4,                                    -- default: 20 | niri: 3
+
     -- Workspaces by number (modifier only, the key is 1-9 and 0)
     kbGoToWs                   = "SUPER",                              -- default: SUPER | niri: Mod
     kbMoveWinToWs              = "CTRL + SUPER",                       -- default: SUPER + ALT | niri: Mod+CTRL

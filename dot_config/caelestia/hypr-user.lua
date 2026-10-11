@@ -84,7 +84,6 @@ Missing: other niri settings with no counterpart in this configuration.
   input       warp-mouse-to-focus mode="center-xy"   not set
   input       workspace-auto-back-and-forth          not set (binds.workspace_back_and_forth)
   input       touchpad tap, natural-scroll           natural_scroll set by Caelestia; tap-to-click not set
-  layout      gaps 3                                 Caelestia: gaps_in 5, gaps_out 10, 20 with one window
   layout      column widths and centring             no columns in dwindle
   rules       named workspaces Main, Game, Chat, Misc
   rules       zen, obsidian -> Main; steam, lutris -> Game; vesktop, telegram, signal, element, fractal -> Chat; spotify -> Misc
@@ -101,7 +100,7 @@ Missing: other niri settings with no counterpart in this configuration.
 
 -- Monitors: the G9's preferred HDMI mode is 3840x1080, so force native resolution
 hl.monitor({
-    output   = "HDMI-A-2",
+    output   = "desc:Samsung Electric Company LS49AG95 HNTRA00181", -- match by EDID, connector name changes
     mode     = "5120x1440@59.98",
     position = "0x0",
     scale    = 1,
