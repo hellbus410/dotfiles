@@ -1,0 +1,72 @@
+# Aliases shared with bash
+_aliases="${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliases.sh"
+[ -r "$_aliases" ] && . "$_aliases"
+unset _aliases
+
+# load modules
+zmodload zsh/complist
+autoload -U compinit && compinit
+autoload -U colors && colors
+
+# main opts
+setopt append_history inc_append_history share_history # better history
+# on exit, history appends rather than overwrites; history is appended as soon as cmds executed; history shared across sessions
+setopt hist_ignore_dups hist_ignore_space hist_reduce_blanks # zsh's HISTCONTROL=ignoreboth, plus squeezed spaces
+setopt extended_history # timestamps in the file, shown by `history -i`
+
+# history opts
+HISTSIZE=1000000
+SAVEHIST=1000000
+HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh_history" # move histfile to cache
+
+# vi mode
+# zsh picked the vi keymap on its own because $EDITOR contains "vi"; this makes it explicit
+bindkey -v
+KEYTIMEOUT=1 # Esc switches to normal mode after 10ms instead of 400ms
+
+# insert mode: backspace and ^W delete past where insert started (vim's backspace=start)
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^W' backward-kill-word
+bindkey -M viins '^U' backward-kill-line
+bindkey -M viins '^A' beginning-of-line
+bindkey -M viins '^E' end-of-line
+
+# normal mode: `v` edits the command line in nvim
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line
+
+# menu completion (Tab twice) moves with hjkl
+zstyle ':completion:*' menu select
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+
+# cursor: block in normal mode, beam in insert mode
+# defined before starship, which wraps an existing zle-keymap-select
+_cursor_shape() {
+    case $KEYMAP in
+        vicmd) printf '\e[2 q' ;;
+        *)     printf '\e[6 q' ;;
+    esac
+}
+zle-keymap-select() { _cursor_shape }
+zle-line-init() { _cursor_shape }
+zle -N zle-keymap-select
+zle -N zle-line-init
+_cursor_reset() { printf '\e[2 q' } # programs started from the shell (nvim) expect a block
+autoload -U add-zsh-hook
+add-zsh-hook preexec _cursor_reset
+
+# tools
+# fzf: Ctrl-T files, Ctrl-R history, Alt-C directories, ** completion; after bindkey -v, which resets keymaps
+command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
+# zoxide: `z dir`, `zi` picks with fzf
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh)"
+# direnv: loads and unloads .envrc on cd
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
+
+# prompt: ~/.config/starship.toml
+command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
