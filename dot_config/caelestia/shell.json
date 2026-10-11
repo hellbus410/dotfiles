@@ -2,6 +2,25 @@
     "appearance": {
         "transparency": {
             "enabled": false
+        },
+        "font": {
+            "headline": {
+                "family": "Maple Mono NF"
+            },
+            "title": {
+                "family": "Maple Mono NF"
+            },
+            "body": {
+                "family": "Maple Mono NF"
+            },
+            "label": {
+                "family": "Maple Mono NF"
+            },
+            "mono": {
+                "family": "Maple Mono NF"
+            },
+            "clock": "Maple Mono NF",
+            "workspaces": "Maple Mono NF"
         }
     },
     "background": {
