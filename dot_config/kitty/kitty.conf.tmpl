@@ -21,8 +21,6 @@ enable_audio_bell       no
 remember_window_size no
 
 background_opacity 0.9
-background         #060a0e
-{{- if lookPath "dms" }}
 
-include dank-theme.conf
-{{- end }}
+# Colours follow the Caelestia scheme, generated from ~/.config/caelestia/templates/kitty.conf
+include ~/.local/state/caelestia/theme/kitty.conf

@@ -18,12 +18,9 @@ hide-when-typing=yes
 [scrollback]
 lines=20000
 
-{{- if lookPath "dms" }}
-
-[main]
-include=~/.config/foot/dank-colors.ini
-{{- end }}
-
 [colors-dark]
 alpha=0.9
-background=060a0e
+
+# Colours follow the Caelestia scheme, generated from ~/.config/caelestia/templates/foot.ini
+[main]
+include=~/.local/state/caelestia/theme/foot.ini
