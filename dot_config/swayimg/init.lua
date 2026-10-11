@@ -1,12 +1,11 @@
--- swayimg config (defaults: /nix/store/*-swayimg-*/share/swayimg/example.lua)
+-- swayimg config
 -- Viewer:  j/k or PgDown/PgUp = next/previous image, h or t = hide the info text, Enter = gallery
 -- Gallery: h/j/k/l or arrows = move, Enter = open
 
 -- Opened with one file (yazi, xdg-open): also load the rest of its folder
 swayimg.imagelist.adjacent = true
 
--- "monospace" resolves to Terminess, which swayimg renders as thin broken lines
-swayimg.text.font = "BlexMono Nerd Font"
+swayimg.text.font = "Maple Mono NF"
 
 local function toggle_text()
     swayimg.text.visible = not swayimg.text.visible
