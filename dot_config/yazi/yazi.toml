@@ -1,0 +1,6 @@
+# Files opened with Enter run detached (orphan), so yazi can quit while they stay open.
+# Same as yazi's default "open" opener, plus orphan = true (its "play" opener already has it).
+[opener]
+open = [
+	{ run = "xdg-open %s1", desc = "Open", for = "linux", orphan = true },
+]
