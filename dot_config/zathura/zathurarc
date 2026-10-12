@@ -1,0 +1,19 @@
+# zathura config
+# PgDown/PgUp = next/previous page, d = one/two pages, Enter = contents, Ctrl+R = toggle dark mode, p = print
+# Contents: j/k = move, h/l = collapse/expand, Enter = open
+# zathura remembers page, zoom and one/two-page mode per file (~/.local/share/zathura/bookmarks.sqlite)
+
+set font "Maple Mono NF 11"
+set adjust-open "best-fit"          # whole page on screen, like an image
+set first-page-column "1:1"         # two-page mode (d): pages 1+2, 3+4… (default "1:2" puts page 1 alone like a book cover)
+set advance-pages-per-row true      # in two-page mode PgDown/PgUp turn both pages
+set scroll-page-aware true          # full-page scrolls stop at page edges
+set selection-clipboard clipboard   # selected text goes to Ctrl+V, not just middle-click
+set recolor true                    # dark mode on open
+set recolor-keephue true            # keep colours in images and charts
+set recolor-lightcolor "#1c1c1c"    # dark-mode page a shade lighter than the black window, so page edges show
+
+map <PageDown> navigate next
+map <PageUp> navigate previous
+map <Return> toggle_index
+map p print
