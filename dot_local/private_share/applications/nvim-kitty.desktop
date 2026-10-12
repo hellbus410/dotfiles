@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Neovim (kitty)
+Comment=Neovim in its own kitty window; xdg-open ignores Terminal=true, so nvim.desktop can't open files from GUI apps
+Exec=kitty nvim %F
+Icon=nvim
+Terminal=false
+NoDisplay=true
+MimeType=text/plain;
