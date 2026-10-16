@@ -3,3 +3,9 @@
 on   = "<C-v>"
 run  = 'shell -- wl-paste --type image/png > "screenshot-$(date +%%Y%%m%%d-%%H%%M%%S).png"'
 desc = "Paste clipboard image as PNG"
+
+# Enter goes into folders instead of opening them in nvim (plugins/smart-enter.yazi)
+[[mgr.prepend_keymap]]
+on   = "<Enter>"
+run  = "plugin smart-enter"
+desc = "Enter the folder, or open the file"
