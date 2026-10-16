@@ -131,6 +131,16 @@
             "terminal": [
                 "kitty"
             ]
+        },
+        "idle": {
+            "lockBeforeSleep": false,
+            "inhibitWhenAudio": true,
+            "timeouts": [
+                {
+                    "timeout": 600,
+                    "idleAction": "lock"
+                }
+            ]
         }
     },
     "services": {
