@@ -99,6 +99,15 @@ vim.filetype.add({
 --- Language servers ---
 vim.diagnostic.config({ virtual_lines = true })
 
+-- Hyprland's Lua API (the `hl` global) for its config files; stable path to the stubs Hyprland ships
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            workspace = { library = { "/run/current-system/sw/share/hypr/stubs" } },
+        },
+    },
+})
+
 -- Only enable servers whose binary is installed (they come from nix-conf's packages.nix).
 -- Missing ones are reported once; the list of reported names lives in stdpath("state").
 local servers = {
