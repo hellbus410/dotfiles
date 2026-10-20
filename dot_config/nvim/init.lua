@@ -98,6 +98,9 @@ vim.filetype.add({
 
 --- Language servers ---
 vim.diagnostic.config({ virtual_lines = true })
+vim.keymap.set("n", "<leader>td", function()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = "Toggle diagnostics" })
 
 -- Hyprland's Lua API (the `hl` global) for its config files; stable path to the stubs Hyprland ships
 vim.lsp.config("lua_ls", {
