@@ -5,21 +5,21 @@
         },
         "font": {
             "headline": {
-                "family": "Maple Mono NF"
+                "family": "Maple Mono SL NF"
             },
             "title": {
-                "family": "Maple Mono NF"
+                "family": "Maple Mono NR NF"
             },
             "body": {
-                "family": "Maple Mono NF"
+                "family": "Maple Mono NR NF"
             },
             "label": {
-                "family": "Maple Mono NF"
+                "family": "Maple Mono NR NF"
             },
             "mono": {
                 "family": "Maple Mono NF"
             },
-            "clock": "Maple Mono NF",
+            "clock": "Maple Mono NR NF",
             "workspaces": "Maple Mono NF"
         }
     },
