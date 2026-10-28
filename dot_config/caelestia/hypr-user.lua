@@ -120,7 +120,13 @@ hl.config({
         new_status                    = "slave", -- new windows open at the sides, not as master
         smart_resizing                = true,
     },
+    dwindle = {
+        force_split = 2, -- new window takes the right (or bottom) half of the split
+    },
 })
+
+-- Laptop screen: dwindle instead of the ultrawide's centered master
+hl.workspace_rule({ workspace = "m[eDP-1]", layout = "dwindle" })
 
 -- kitty asks to be maximised on launch, which breaks the tiling layout
 -- hl.window_rule({ match = { class = "^kitty(-scratch)?$" }, suppress_event = "maximize" })
