@@ -1,0 +1,3 @@
+# Keys the 1Password SSH agent offers; without this file it only serves the Personal/Private vault.
+[[ssh-keys]]
+vault = "10 Keys"
