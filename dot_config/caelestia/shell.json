@@ -1,17 +1,12 @@
 {
     "appearance": {
-        "transparency": {
-            "enabled": false
-        },
         "font": {
-            "headline": {
-                "family": "Maple Mono SL NF"
-            },
-            "title": {
-                "family": "Maple Mono NR NF"
-            },
             "body": {
                 "family": "Maple Mono NR NF"
+            },
+            "clock": "Maple Mono NR NF",
+            "headline": {
+                "family": "Maple Mono SL NF"
             },
             "label": {
                 "family": "Maple Mono NR NF"
@@ -19,8 +14,13 @@
             "mono": {
                 "family": "Maple Mono NF"
             },
-            "clock": "Maple Mono NR NF",
+            "title": {
+                "family": "Maple Mono NR NF"
+            },
             "workspaces": "Maple Mono NF"
+        },
+        "transparency": {
+            "enabled": false
         }
     },
     "background": {
@@ -133,12 +133,16 @@
             ]
         },
         "idle": {
-            "lockBeforeSleep": false,
             "inhibitWhenAudio": true,
+            "lockBeforeSleep": false,
             "timeouts": [
                 {
-                    "timeout": 600,
-                    "idleAction": "lock"
+                    "enabled": true,
+                    "idleAction": "lock",
+                    "inhibitWhenAudio": false,
+                    "inhibitWhenCharging": false,
+                    "respectInhibitors": true,
+                    "timeout": 600
                 }
             ]
         }
