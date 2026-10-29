@@ -35,9 +35,8 @@ repo:
 defaults:
   preview:
     open: true
-    width: 70
+    width: 90
   prsLimit: 20
-  prApproveComment: LGTM
   issuesLimit: 20
   notificationsLimit: 20
   view: prs
@@ -82,12 +81,6 @@ keybindings:
       name: lazygit
       command: >
         cd {{.RepoPath}}; lazygit
-  prs:
-    - key: C
-      name: code review
-      command: >
-        tmux new-window -n "PR-{{.PrNumber}}" 
-        'wt switch pr:{{.PrNumber}} -x "opencode --prompt `@code-reviewer: review-pr-for-this-branch`"'
 
 theme:
   colors:
