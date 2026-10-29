@@ -126,6 +126,8 @@ application/x-extension-shtml=zen-beta.desktop
 application/xhtml+xml=zen-beta.desktop
 application/x-extension-xhtml=zen-beta.desktop
 application/x-extension-xht=zen-beta.desktop
+x-scheme-handler/clash=clash-verge.desktop;
+x-scheme-handler/clash-verge=clash-verge.desktop;
 
 [Added Associations]
 x-scheme-handler/tg=org.telegram.desktop.desktop;
@@ -140,3 +142,5 @@ application/x-extension-shtml=zen-beta.desktop;
 application/xhtml+xml=zen-beta.desktop;
 application/x-extension-xhtml=zen-beta.desktop;
 application/x-extension-xht=zen-beta.desktop;
+x-scheme-handler/clash=clash-verge.desktop;
+x-scheme-handler/clash-verge=clash-verge.desktop;
