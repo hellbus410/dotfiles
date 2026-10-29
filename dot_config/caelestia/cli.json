@@ -18,6 +18,14 @@
                 "move": true
             }
         },
+        "mail": {
+            "protonmail": {
+                "enable": true,
+                "match": [{ "class": "proton-mail" }],
+                "command": ["proton-mail"],
+                "move": true
+            }
+        },
         "term": {
             "kitty": {
                 "enable": true,

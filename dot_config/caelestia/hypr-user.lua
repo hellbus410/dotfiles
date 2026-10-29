@@ -11,7 +11,7 @@ hl.bind("SUPER + ALT + B", hl.dsp.exec_cmd("qutebrowser"))                      
 hl.bind("SUPER + ALT + E", hl.dsp.exec_cmd("kitty yazi"))                                               -- default: none | niri: none (SUPER + E is nautilus, kbFileExplorer)
 hl.bind("SUPER + O", hl.dsp.exec_cmd("obsidian"))                                                       -- default: none | niri: Mod+O
 hl.bind("SUPER + T", require("utils.functions").toggle("telegram"))                                       -- default: terminal (scratchpad, see bottom) | niri: Mod+T
-hl.bind("SUPER + M", hl.dsp.exec_cmd("proton-mail"))                                                       -- default: music scratchpad (moved to SUPER + ALT + M) | niri: Mod+M
+hl.bind("SUPER + M", require("utils.functions").toggle("mail"))                                           -- default: music scratchpad (moved to SUPER + ALT + M) | niri: Mod+M
 -- hl.bind("SUPER + A", hl.dsp.exec_cmd("kitty tmux new -A -s claude"))                                 -- default: none | niri: Mod+ALT+A
 -- hl.bind("SUPER + ALT + R", hl.dsp.exec_cmd("brave --app-id=ooigkdhpdelnhnmnknbeeajbngilljbe"))          -- default: record with sound | niri: Mod+ALT+R (Renshuu)
 -- hl.bind("SUPER + ALT + G", hl.dsp.exec_cmd("brave --app-id=mjoklplbddabcmpepnokjaffbmgbkkgg"))          -- default: none | niri: Mod+ALT+G (GitHub)
@@ -174,10 +174,13 @@ hl.config({
 hl.on("hyprland.start", function()
     hl.exec_cmd("1password --silent") -- straight to tray, keeps SSH agent / browser unlock available
     hl.exec_cmd("tmux new -d -s master") -- starts the tmux server (continuum restores the rest); SUPER + Return attaches
+    hl.exec_cmd("proton-mail") -- no close-to-tray, so it lives hidden in special:mail to keep mail notifications coming
 end)
 
 -- Telegram has its own scratchpad (SUPER + T); Vesktop keeps the communication one (SUPER + D)
 hl.window_rule({ match = { class = "^org\\.telegram\\.desktop$" }, workspace = "special:telegram" })
+-- Proton Mail has its own scratchpad (SUPER + M); silent so the autostart doesn't open it on login
+hl.window_rule({ match = { class = "^proton-mail$" }, workspace = "special:mail silent" })
 
 -- Group tab bar: narrow Maple, the UI font (Caelestia: JetBrains Mono NF)
 hl.config({ group = { groupbar = { font_family = "Maple Mono NR NF" } } })
