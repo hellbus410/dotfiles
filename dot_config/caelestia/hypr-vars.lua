@@ -59,7 +59,7 @@ return {
     kbWindowIncreaseHeight     = "SUPER + SHIFT + Equal",              -- default: SUPER + SHIFT + Equal, SUPER + ALT + Down | niri: Mod+Shift+Equal
     kbWindowFullscreen         = "SUPER + ALT + F",                    -- default: SUPER + F | niri: Mod+ALT+F
     kbWindowBorderedFullscreen = "SUPER + F",                          -- default: SUPER + ALT + F | niri: Mod+F (maximize-window-to-edges)
-    kbToggleWindowFloating     = "SUPER + ALT + T",                    -- default: SUPER + ALT + Space | niri: Mod+ALT+T (SUPER + T is Telegram)
+    kbToggleWindowFloating     = "SUPER + SHIFT + T",                  -- default: SUPER + ALT + Space | niri: Mod+ALT+T (SUPER + T is Telegram)
     kbCloseWindow              = "SUPER + Q",                          -- default: SUPER + Q | niri: Mod+Q
     kbMoveWindow               = "SUPER + Z",                          -- default: SUPER + Z | niri: none
     kbResizeWindow             = "SUPER + X",                          -- default: SUPER + X | niri: none
