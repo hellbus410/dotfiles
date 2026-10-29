@@ -175,10 +175,12 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("1password --silent") -- straight to tray, keeps SSH agent / browser unlock available
     hl.exec_cmd("tmux new -d -s master") -- starts the tmux server (continuum restores the rest); SUPER + Return attaches
     hl.exec_cmd("proton-mail") -- no close-to-tray, so it lives hidden in special:mail to keep mail notifications coming
+    hl.exec_cmd("Telegram") -- hidden in special:telegram like Proton Mail
 end)
 
--- Telegram has its own scratchpad (SUPER + T); Vesktop keeps the communication one (SUPER + D)
-hl.window_rule({ match = { class = "^org\\.telegram\\.desktop$" }, workspace = "special:telegram" })
+-- Telegram has its own scratchpad (SUPER + T), silent for the autostart; Vesktop keeps the communication one (SUPER + D)
+hl.window_rule({ match = { class = "^org\\.telegram\\.desktop$" }, workspace = "special:telegram silent" })
+
 -- Proton Mail has its own scratchpad (SUPER + M); silent so the autostart doesn't open it on login
 hl.window_rule({ match = { class = "^proton-mail$" }, workspace = "special:mail silent" })
 
