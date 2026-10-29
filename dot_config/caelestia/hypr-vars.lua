@@ -7,9 +7,9 @@
 return {
     -- Apps
     terminal                   = "kitty tmux new -A -s master",        -- default: foot | niri: foot -e tmux new -A -s main
-    browser                    = "brave",                              -- default: firefox | niri: flatpak run app.zen_browser.zen; Zen is not in Nixpkgs, use the name its flake installs
+    browser                    = "zen-beta",                           -- default: firefox | niri: flatpak run app.zen_browser.zen; Zen is not in Nixpkgs, use the name its flake installs
     editor                     = "kitty nvim",                         -- default: codium | niri: none
-    fileExplorer               = "kitty yazi",                         -- default: thunar | niri: nautilus
+    fileExplorer               = "nautilus",                           -- default: thunar | niri: nautilus; yazi is SUPER + ALT + E in hypr-user.lua
     audioSettings              = "pwvucontrol",                        -- default: pwvucontrol | niri: none
 
     -- Cursor (~/.local/share/icons/arknights, falls back to …/prts; both in chezmoi)
@@ -40,8 +40,8 @@ return {
     kbMoveWinToWsPrev          = "CTRL + SUPER + I",                   -- default: SUPER + ALT + mouse_up, SUPER + ALT + Page_Up, CTRL + SUPER + SHIFT + Left | niri: Mod+CTRL+K, Mod+CTRL+Page_Up, Mod+CTRL+WheelScrollUp
     kbNextWsGroup              = "",                                   -- default: CTRL + SUPER + mouse_down | niri: none
     kbPrevWsGroup              = "",                                   -- default: CTRL + SUPER + mouse_up | niri: none
-    kbMoveWinToWsSpecial       = "SUPER + ALT + S",                    -- default: SUPER + ALT + S, CTRL + SUPER + SHIFT + Up | niri: none
-    kbMoveWinFromWsSpecial     = "CTRL + SUPER + ALT + S",             -- default: CTRL + SUPER + SHIFT + Down | niri: none
+    kbMoveWinToWsSpecial       = "",                                   -- default: SUPER + ALT + S, CTRL + SUPER + SHIFT + Up | niri: none; SUPER + W toggles in hypr-user.lua
+    kbMoveWinFromWsSpecial     = "",                                   -- default: CTRL + SUPER + SHIFT + Down | niri: none; SUPER + W toggles in hypr-user.lua
 
     -- Window groups
     kbWindowCycleNext          = "",                                   -- default: ALT + TAB | niri: none
@@ -71,8 +71,8 @@ return {
     -- Special workspaces (scratchpads)
     kbSystemMonitorWs          = "CTRL + SHIFT + Escape",              -- default: CTRL + SHIFT + Escape | niri: CTRL+Shift+Escape opened btop in a new foot window
     kbCommunicationWs          = "SUPER + D",                          -- default: SUPER + D | niri: Mod+D opened Vesktop
-    kbMusicWs                  = "SUPER + S",                          -- default: SUPER + M | niri: Mod+S opened Spotify
-    kbSpecialWs                = "SUPER + grave",                      -- default: SUPER + S | niri: none
+    kbMusicWs                  = "SUPER + ALT + M",                    -- default: SUPER + M | niri: Mod+S opened Spotify
+    kbSpecialWs                = "SUPER + S",                          -- default: SUPER + S | niri: none
     kbTodoWs                   = "",                                   -- default: SUPER + R | niri: none; Todoist is disabled in cli.json
 
     -- Apps
@@ -103,7 +103,7 @@ return {
     kbSession                  = "SUPER + SHIFT + Q",                  -- default: CTRL + ALT + Delete | niri: Mod+Shift+Q
     kbLock                     = "SUPER + ALT + L",                    -- default: SUPER + L | niri: Mod+ALT+L
     kbShowSidebar              = "SUPER + N",                          -- default: SUPER + N | niri: none
-    kbClearNotifs              = "",                                   -- default: CTRL + ALT + C | niri: none
+    kbClearNotifs              = "SUPER + ALT + N",                    -- default: CTRL + ALT + C | niri: none
     kbShowPanels               = "",                                   -- default: SUPER + K | niri: none
     kbRestoreLock              = "CTRL + SUPER + ALT + L",             -- default: SUPER + ALT + L | niri: none
     kbSleep                    = "",                                   -- default: SUPER + SHIFT + L | niri: none
@@ -112,5 +112,5 @@ return {
     kbClipboard                = "SUPER + V",                          -- default: SUPER + V | niri: Mod+V
     kbClipboardDel             = "SUPER + ALT + V",                    -- default: SUPER + ALT + V | niri: none
     kbClipboardPasteLatest     = "",                                   -- default: CTRL + SHIFT + ALT + V | niri: none
-    kbEmoji                    = "SUPER + Period",                     -- default: SUPER + Period | niri: none
+    kbEmoji                    = "SUPER + SHIFT + V",                  -- default: SUPER + Period | niri: none
 }
