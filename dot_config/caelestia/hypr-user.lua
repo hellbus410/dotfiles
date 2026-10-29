@@ -7,11 +7,11 @@
 -- Apps
 hl.bind("SUPER + ALT + Return", require("utils.functions").toggle("term"))                                -- default: none | niri: Mod+ALT+Return
 hl.bind("SUPER + P", hl.dsp.exec_cmd("1password"))                                                      -- default: pin window | niri: Mod+P
-hl.bind("SUPER + ALT + B", hl.dsp.exec_cmd("brave-origin"))                                                    -- default: none | niri: Mod+ALT+B
-hl.bind("SUPER + B", hl.dsp.exec_cmd("zen-beta"))                                                    -- default: none | niri: Mod+B
+hl.bind("SUPER + ALT + B", hl.dsp.exec_cmd("qutebrowser"))                                              -- default: none | niri: Mod+ALT+B
+hl.bind("SUPER + ALT + E", hl.dsp.exec_cmd("kitty yazi"))                                               -- default: none | niri: none (SUPER + E is nautilus, kbFileExplorer)
 hl.bind("SUPER + O", hl.dsp.exec_cmd("obsidian"))                                                       -- default: none | niri: Mod+O
 hl.bind("SUPER + T", require("utils.functions").toggle("telegram"))                                       -- default: terminal (scratchpad, see bottom) | niri: Mod+T
-hl.bind("SUPER + M", hl.dsp.exec_cmd("proton-mail"))                                                       -- default: music scratchpad (moved to SUPER + S) | niri: Mod+M
+hl.bind("SUPER + M", hl.dsp.exec_cmd("proton-mail"))                                                       -- default: music scratchpad (moved to SUPER + ALT + M) | niri: Mod+M
 -- hl.bind("SUPER + A", hl.dsp.exec_cmd("kitty tmux new -A -s claude"))                                 -- default: none | niri: Mod+ALT+A
 -- hl.bind("SUPER + ALT + R", hl.dsp.exec_cmd("brave --app-id=ooigkdhpdelnhnmnknbeeajbngilljbe"))          -- default: record with sound | niri: Mod+ALT+R (Renshuu)
 -- hl.bind("SUPER + ALT + G", hl.dsp.exec_cmd("brave --app-id=mjoklplbddabcmpepnokjaffbmgbkkgg"))          -- default: none | niri: Mod+ALT+G (GitHub)
@@ -136,6 +136,24 @@ hl.window_rule({ match = { class = "^termfilechooser$" }, tag = "+float_60_70" }
 
 -- Screenshots: region picker straight to the clipboard instead of opening swappy
 hl.bind("SUPER + SHIFT + S", hl.dsp.global("caelestia:screenshotFreezeClip"))                           -- default: same key, opens swappy | niri: Mod+Shift+S
+
+-- Shell panels: dashboard no longer opens on hover (shell.json), bar hidden unless toggled (bar.persistent = false)
+hl.bind("SUPER + SHIFT + O", hl.dsp.global("caelestia:dashboard"))                                      -- default: none | niri: none
+hl.bind("SUPER + SHIFT + P", hl.dsp.exec_cmd("caelestia shell drawers toggle bar"))                     -- default: none | niri: none
+hl.bind("SUPER + SHIFT + N", hl.dsp.global("caelestia:nexus"))                                          -- default: none | niri: none
+
+-- Scratchpad: one key moves the active window into special:special, or back out to the current
+-- workspace if it is already in a special workspace (replaces kbMoveWinToWsSpecial/FromWsSpecial)
+hl.bind("SUPER + W", function()                                                                         -- default: browser | niri: none
+    local win = hl.get_active_window()
+    if not win then return end
+
+    if win.workspace and win.workspace.special then
+        hl.dispatch(hl.dsp.window.move({ workspace = "e+0" }))
+    else
+        hl.dispatch(hl.dsp.window.move({ workspace = "special:special" }))
+    end
+end)
 
 -- Focus: after closing a window, focus the next window instead of whatever is under the
 -- cursor (Caelestia's 1 leaves nothing focused when the cursor is over a gap or the bar)

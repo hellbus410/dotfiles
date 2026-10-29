@@ -31,7 +31,7 @@
             "compact": false,
             "inverted": true
         },
-        "persistent": true,
+        "persistent": false,
         "popouts": {
             "tray": true
         },
@@ -121,6 +121,9 @@
                 }
             ]
         }
+    },
+    "dashboard": {
+        "showOnHover": false
     },
     "general": {
         "apps": {
