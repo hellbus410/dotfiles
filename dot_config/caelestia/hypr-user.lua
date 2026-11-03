@@ -12,7 +12,7 @@ hl.bind("SUPER + ALT + E", hl.dsp.exec_cmd("kitty yazi"))                       
 hl.bind("SUPER + O", hl.dsp.exec_cmd("obsidian"))                                                       -- default: none | niri: Mod+O
 hl.bind("SUPER + T", require("utils.functions").toggle("telegram"))                                       -- default: terminal (scratchpad, see bottom) | niri: Mod+T
 hl.bind("SUPER + M", require("utils.functions").toggle("mail"))                                           -- default: music scratchpad (moved to SUPER + ALT + M) | niri: Mod+M
--- hl.bind("SUPER + A", hl.dsp.exec_cmd("kitty tmux new -A -s claude"))                                 -- default: none | niri: Mod+ALT+A
+hl.bind("SUPER + A", hl.dsp.exec_cmd("kitty tmux new -A -s ai"))                                 -- default: none | niri: Mod+ALT+A
 -- hl.bind("SUPER + ALT + R", hl.dsp.exec_cmd("brave --app-id=ooigkdhpdelnhnmnknbeeajbngilljbe"))          -- default: record with sound | niri: Mod+ALT+R (Renshuu)
 -- hl.bind("SUPER + ALT + G", hl.dsp.exec_cmd("brave --app-id=mjoklplbddabcmpepnokjaffbmgbkkgg"))          -- default: none | niri: Mod+ALT+G (GitHub)
 
