@@ -70,3 +70,6 @@ command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 
 # prompt: ~/.config/starship.toml
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
+
+# hugging face autocomplete
+eval "$(_HF_COMPLETE=zsh_source hf)"
