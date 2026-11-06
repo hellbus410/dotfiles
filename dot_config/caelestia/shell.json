@@ -31,13 +31,20 @@
             "compact": false,
             "inverted": true
         },
+        "clock": {
+            "background": false,
+            "showDate": true,
+            "showSeconds": false
+        },
         "persistent": false,
         "popouts": {
             "tray": true
         },
         "scrollActions": {
-            "brightness": false
+            "brightness": false,
+            "volume": false
         },
+        "showOnHover": false,
         "statusIcons": [
             {
                 "enabled": true,
@@ -150,11 +157,20 @@
             ]
         }
     },
+    "launcher": {
+        "actionPrefix": ">",
+        "enableDangerousActions": true,
+        "showOnHover": false,
+        "vimKeybinds": true
+    },
     "services": {
         "clockFormat": "TwentyFourHour",
         "gpuType": "Nvidia",
         "sensorUnits": "Celsius",
         "weatherUnits": "Celsius"
+    },
+    "sidebar": {
+        "enabled": true
     },
     "utilities": {
         "cards": {
@@ -186,7 +202,7 @@
                 "id": "dnd"
             },
             {
-                "enabled": true,
+                "enabled": false,
                 "id": "vpn"
             }
         ]
