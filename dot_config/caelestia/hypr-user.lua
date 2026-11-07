@@ -171,6 +171,12 @@ hl.bind("SUPER + SHIFT + O", hl.dsp.global("caelestia:dashboard"))              
 hl.bind("SUPER + SHIFT + P", hl.dsp.exec_cmd("caelestia shell drawers toggle bar"))                     -- default: none | niri: none
 hl.bind("SUPER + SHIFT + N", hl.dsp.global("caelestia:nexus"))                                          -- default: none | niri: none
 
+-- Power profiles: powerprofilesctl is provided by power-profiles-daemon (modules/desktop.nix)
+-- and works across both laptop (helheimr, backed by asusd/platform_profile) and desktop (bifrost).
+hl.bind("CTRL + SHIFT + F1", hl.dsp.exec_cmd("powerprofilesctl set power-saver; caelestia shell toaster info 'Power Profile' 'Quiet' 'energy_savings_leaf'"), { locked = true })
+hl.bind("CTRL + SHIFT + F2", hl.dsp.exec_cmd("powerprofilesctl set balanced; caelestia shell toaster info 'Power Profile' 'Balanced' 'balance'"), { locked = true })
+hl.bind("CTRL + SHIFT + F3", hl.dsp.exec_cmd("powerprofilesctl set performance; caelestia shell toaster info 'Power Profile' 'Performance' 'speed'"), { locked = true })
+
 -- Scratchpad: one key moves the active window into special:special, or back out to the current
 -- workspace if it is already in a special workspace (replaces kbMoveWinToWsSpecial/FromWsSpecial)
 hl.bind("SUPER + W", function()                                                                         -- default: browser | niri: none
