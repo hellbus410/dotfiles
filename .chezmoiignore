@@ -20,6 +20,7 @@
 {{- if not (lookPath "Hyprland") }}
 .config/hypr
 .config/caelestia/hypr-user.lua
+.config/caelestia/local.d
 .config/caelestia/hypr-vars.lua
 .config/xdg-desktop-portal-termfilechooser
 .local/share/icons/arknights
@@ -28,4 +29,11 @@
 {{- if not (lookPath "caelestia") }}
 .config/caelestia/cli.json
 .config/caelestia/shell.json
+{{- end }}
+{{- $chassis := "" }}
+{{- if lookPath "hostnamectl" }}
+{{-   $chassis = output "hostnamectl" "chassis" | trim }}
+{{- end }}
+{{- if not (or (eq $chassis "laptop") (eq $chassis "convertible")) }}
+.config/caelestia/local.d/laptop.lua
 {{- end }}

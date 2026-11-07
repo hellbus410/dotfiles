@@ -9,7 +9,7 @@ return {
     terminal                   = "kitty tmux new -A -s master",        -- default: foot | niri: foot -e tmux new -A -s main
     browser                    = "zen-beta",                           -- default: firefox | niri: flatpak run app.zen_browser.zen; Zen is not in Nixpkgs, use the name its flake installs
     editor                     = "kitty nvim",                         -- default: codium | niri: none
-    fileExplorer               = "nautilus",                           -- default: thunar | niri: nautilus; yazi is SUPER + ALT + E in hypr-user.lua
+    fileExplorer               = "kitty yazi",                           -- default: thunar | niri: nautilus; yazi is SUPER + ALT + E in hypr-user.lua
     audioSettings              = "pwvucontrol",                        -- default: pwvucontrol | niri: none
 
     -- Cursor (~/.local/share/icons/arknights, falls back to …/prts; both in chezmoi)

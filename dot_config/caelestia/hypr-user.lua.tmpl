@@ -1,0 +1,20 @@
+-- ~/.config/caelestia/hypr-user.lua
+-- Loaded last by ~/.config/hypr/hyprland.lua.
+-- Personal Hyprland overrides, composed from split files in ./local.d/.
+
+local home = os.getenv("HOME")
+package.path = home .. "/.config/caelestia/local.d/?.lua;" .. package.path
+
+require("monitors")
+require("layout")
+require("input")
+require("rules")
+require("keybinds")
+require("autostart")
+{{- $chassis := "" }}
+{{- if lookPath "hostnamectl" }}
+{{-   $chassis = output "hostnamectl" "chassis" | trim }}
+{{- end }}
+{{- if or (eq $chassis "laptop") (eq $chassis "convertible") }}
+require("laptop")
+{{- end }}
