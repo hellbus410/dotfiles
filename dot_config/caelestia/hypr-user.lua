@@ -211,6 +211,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("tmux new -d -s master") -- starts the tmux server (continuum restores the rest); SUPER + Return attaches
     hl.exec_cmd("proton-mail") -- no close-to-tray, so it lives hidden in special:mail to keep mail notifications coming
     hl.exec_cmd("Telegram") -- hidden in special:telegram like Proton Mail
+    hl.exec_cmd("rog-control-center --background")
 end)
 
 -- Telegram has its own scratchpad (SUPER + T), silent for the autostart; Vesktop keeps the communication one (SUPER + D)
