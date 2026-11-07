@@ -26,6 +26,14 @@
                 "move": true
             }
         },
+        "1password": {
+            "1password": {
+                "enable": true,
+                "match": [{ "class": "com.onepassword.OnePassword" }],
+                "command": ["1password"],
+                "move": true
+            }
+        },
         "term": {
             "kitty": {
                 "enable": true,

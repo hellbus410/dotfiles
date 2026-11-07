@@ -10,3 +10,10 @@ hl.window_rule({ match = { class = "^org\\.telegram\\.desktop$" }, workspace = "
 -- Proton Mail (SUPER + M) with silent autostart
 -- !!! DOESN'T have tray option - close program actually close it, even inside scratchpad
 hl.window_rule({ match = { class = "^proton-mail$" }, workspace = "special:mail silent" })
+
+-- 1Password (SUPER + P) with silent autostart and don't appear while screensharing
+hl.window_rule({
+    match           = { class = "^(com\\.onepassword\\.OnePassword|1password)$" },
+    workspace       = "special:1password silent",
+    no_screen_share = true,
+})
