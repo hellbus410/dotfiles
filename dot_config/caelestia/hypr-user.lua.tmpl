@@ -5,16 +5,25 @@
 local home = os.getenv("HOME")
 package.path = home .. "/.config/caelestia/local.d/?.lua;" .. package.path
 
-require("monitors")
-require("layout")
-require("input")
-require("rules")
-require("keybinds")
-require("autostart")
+-- load function serve to ensure clean hyprland config reload
+local function load(module)
+    package.loaded[module] = nil
+    return require(module)
+end
+
+-- if laptop present load it first to ensure monitor(-s) layout(-s)
+-- based on laptop lid state
 {{- $chassis := "" }}
 {{- if lookPath "hostnamectl" }}
 {{-   $chassis = output "hostnamectl" "chassis" | trim }}
 {{- end }}
 {{- if or (eq $chassis "laptop") (eq $chassis "convertible") }}
-require("laptop")
+load("laptop")
 {{- end }}
+
+load("monitors")
+load("layout")
+load("input")
+load("rules")
+load("keybinds")
+load("autostart")

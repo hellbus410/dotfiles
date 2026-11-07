@@ -3,7 +3,7 @@
 -- 60Hz over HDMI (hardware limit), 240Hz over DisplayPort.
 hl.monitor({
     output   = "desc:Samsung Electric Company LS49AG95 HNTRA00181",
-    mode     = "5120x1440@59.98",
+    mode     = "5120x1440@239.76",
     position = "0x0",
     scale    = 1,
 })
@@ -18,10 +18,17 @@ local function configure_g9()
                 position = "0x0",
                 scale    = 1,
             })
+            hl.monitor({
+                output   = mon.name,
+                mode     = "5120x1440@" .. hz,
+                position = "0x0",
+                scale    = 1,
+            })
         end
     end
 end
 
 configure_g9()
 hl.on("monitor.added", configure_g9)
+hl.on("monitor.layout_changed", configure_g9)
 

@@ -1,8 +1,8 @@
--- Layout: centered master for the ultrawide. Main window stays in the middle,
--- new windows go to the sides (alternating right/left).
+-- Layout: centered master for ultrawide and 4K+ displays.
+-- Standard displays (1080p, 1440p 16:9, laptop screens) default to dwindle.
 hl.config({
     general = {
-        layout = "master",
+        layout = "dwindle",
     },
     master = {
         orientation                   = "center",
@@ -16,6 +16,27 @@ hl.config({
         force_split = 2, -- new window takes the right (or bottom) half of the split
     },
 })
+
+-- Dynamic layout selection: apply centered master on ultrawide (>= 2.0 aspect ratio)
+-- or 4K+ (>= 3840x2160) displays; dwindle on all other monitors.
+local function configure_monitor_layouts()
+    for _, mon in ipairs(hl.get_monitors({ all = true })) do
+        if mon.width > 0 and mon.height > 0 then
+            local is_ultrawide = (mon.width / mon.height) >= 2.0
+            local is_4k_plus = (mon.width >= 3840 and mon.height >= 2160)
+            local target_layout = (is_ultrawide or is_4k_plus) and "master" or "dwindle"
+
+            hl.workspace_rule({
+                workspace = "m[" .. mon.name .. "]",
+                layout    = target_layout,
+            })
+        end
+    end
+end
+
+configure_monitor_layouts()
+hl.on("monitor.added", configure_monitor_layouts)
+hl.on("monitor.layout_changed", configure_monitor_layouts)
 
 -- Group tab bar: narrow Maple, the UI font (Caelestia: JetBrains Mono NF)
 hl.config({ group = { groupbar = { font_family = "Maple Mono NR NF" } } })
