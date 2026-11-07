@@ -9,6 +9,7 @@ hl.bind("SUPER + ALT + B", hl.dsp.exec_cmd("qutebrowser"))                      
 hl.bind("SUPER + ALT + E", hl.dsp.exec_cmd("nautilus"))                                               -- default: none | niri: none (SUPER + E is nautilus, kbFileExplorer)
 hl.bind("SUPER + O", hl.dsp.exec_cmd("zennotes-desktop"))                                                       -- default: none | niri: Mod+O
 hl.bind("SUPER + ALT + O", hl.dsp.exec_cmd("obsidian"))                                                       -- default: none | niri: Mod+O
+hl.bind("SUPER + SHIFT + O", hl.dsp.exec_cmd("pwvucontrol"))                                                 -- default: none | niri: none
 hl.bind("SUPER + T", require("utils.functions").toggle("telegram"))                                       -- default: terminal (scratchpad, see bottom) | niri: Mod+T
 hl.bind("SUPER + M", require("utils.functions").toggle("mail"))                                           -- default: music scratchpad (moved to SUPER + ALT + M) | niri: Mod+M
 hl.bind("SUPER + A", hl.dsp.exec_cmd("kitty tmux new -A -s ai"))                                 -- default: none | niri: Mod+ALT+A
@@ -58,7 +59,7 @@ hl.bind("CTRL + SUPER + ALT + R", hl.dsp.exec_cmd("caelestia shell -r"), { relea
 hl.bind("SUPER + SHIFT + S", hl.dsp.global("caelestia:screenshotFreezeClip"))                           -- default: same key, opens swappy | niri: Mod+Shift+S
 
 -- Shell panels
-hl.bind("SUPER + SHIFT + O", hl.dsp.global("caelestia:dashboard"))                                      -- default: none | niri: none
+hl.bind("SUPER + SHIFT + D", hl.dsp.global("caelestia:dashboard"))                                      -- default: none | niri: none
 hl.bind("SUPER + SHIFT + P", hl.dsp.exec_cmd("caelestia shell drawers toggle bar"))                     -- default: none | niri: none
 hl.bind("SUPER + SHIFT + N", hl.dsp.global("caelestia:nexus"))                                          -- default: none | niri: none
 
