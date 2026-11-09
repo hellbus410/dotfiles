@@ -1,0 +1,13 @@
+# ~/.config/zsh/.zshrc
+# Interactive zsh configuration.
+
+for _f in env.sh aliases.sh functions.sh; do
+    _path="${XDG_CONFIG_HOME:-$HOME/.config}/shell/$_f"
+    [ -r "$_path" ] && . "$_path"
+done
+unset _f _path
+
+for rc in "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/zshrc.d"/*.zsh; do
+    [ -r "$rc" ] && . "$rc"
+done
+unset rc
