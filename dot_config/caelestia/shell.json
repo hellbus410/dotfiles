@@ -135,11 +135,12 @@
     "general": {
         "apps": {
             "explorer": [
-                "kitty",
+                "foot",
+                "-e",
                 "yazi"
             ],
             "terminal": [
-                "kitty"
+                "foot"
             ]
         },
         "idle": {

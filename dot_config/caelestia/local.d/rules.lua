@@ -1,4 +1,4 @@
--- File dialogs: yazi in kitty (xdg-desktop-portal-termfilechooser), floating like Caelestia's GTK dialogs
+-- File dialogs: yazi in foot (xdg-desktop-portal-termfilechooser), floating like Caelestia's GTK dialogs
 hl.window_rule({ match = { class = "^termfilechooser$" }, tag = "+float_60_70" })
 
 -- Special Scratchpads

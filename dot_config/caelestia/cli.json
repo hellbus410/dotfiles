@@ -35,10 +35,10 @@
             }
         },
         "term": {
-            "kitty": {
+            "foot": {
                 "enable": true,
-                "match": [{ "class": "kitty-scratch" }],
-                "command": ["kitty", "--class", "kitty-scratch"],
+                "match": [{ "class": "foot-scratch" }],
+                "command": ["foot", "--app-id", "foot-scratch"],
                 "move": true
             }
         },
@@ -47,7 +47,7 @@
             "feishin": { "enable": false }
         },
         "sysmon": {
-            "btop": { "command": ["kitty", "--class", "btop", "-T", "btop", "btop"] }
+            "btop": { "command": ["foot", "-a", "btop", "-T", "btop", "-e", "btop"] }
         },
         "todo": {
             "todoist": { "enable": false }

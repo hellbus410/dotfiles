@@ -12,7 +12,7 @@ hl.bind("SUPER + ALT + O", hl.dsp.exec_cmd("obsidian"))                         
 hl.bind("SUPER + SHIFT + O", hl.dsp.exec_cmd("pwvucontrol"))                                                 -- default: none | niri: none
 hl.bind("SUPER + T", require("utils.functions").toggle("telegram"))                                       -- default: terminal (scratchpad, see bottom) | niri: Mod+T
 hl.bind("SUPER + M", require("utils.functions").toggle("mail"))                                           -- default: music scratchpad (moved to SUPER + ALT + M) | niri: Mod+M
-hl.bind("SUPER + A", hl.dsp.exec_cmd("kitty tmux new -A -s ai"))                                 -- default: none | niri: Mod+ALT+A
+hl.bind("SUPER + A", hl.dsp.exec_cmd("foot -e tmux new -A -s ai"))                                 -- default: none | niri: Mod+ALT+A
 hl.bind("SUPER + ALT + A", hl.dsp.exec_cmd("hermes-desktop"))                                 -- default: none | niri: Mod+ALT+A
 
 -- Focus windows (SUPER + arrows already focus, in keybinds.lua)
