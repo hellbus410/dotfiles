@@ -22,7 +22,11 @@ for rc in "$HOME"/.bashrc.d/*.sh; do
 done
 unset rc
 
-# Aliases shared with zsh.
+# Aliases and functions shared with zsh.
 _aliases="${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliases.sh"
 [ -r "$_aliases" ] && . "$_aliases"
 unset _aliases
+
+_functions="${XDG_CONFIG_HOME:-$HOME/.config}/shell/functions.sh"
+[ -r "$_functions" ] && . "$_functions"
+unset _functions
