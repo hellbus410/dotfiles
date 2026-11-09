@@ -21,7 +21,6 @@ hl.window_rule({
 -- 1Password
 hl.window_rule({
     match           = { class = "^(com\\.onepassword\\.OnePassword|1password)$" },
-    workspace       = "special:1password silent",
     no_screen_share = true,
 })
 
