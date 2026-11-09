@@ -6,4 +6,4 @@ setopt extended_history
 
 HISTSIZE=1000000
 SAVEHIST=1000000
-HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh_history"
+export HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh_history"
