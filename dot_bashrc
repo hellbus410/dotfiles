@@ -1,5 +1,3 @@
-# ~/.bashrc
-# Delegate to XDG configuration directory ~/.config/bash/bashrc.
 if [ -r "${XDG_CONFIG_HOME:-$HOME/.config}/bash/bashrc" ]; then
     . "${XDG_CONFIG_HOME:-$HOME/.config}/bash/bashrc"
 fi

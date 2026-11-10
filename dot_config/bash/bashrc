@@ -1,12 +1,10 @@
-# ~/.config/bash/bashrc
-# Interactive bash configuration.
-
 case $- in
     *i*) ;;
       *) return ;;
 esac
 
 [ -r /etc/bashrc ] && . /etc/bashrc
+[ -r /etc/bash.bashrc ] && . /etc/bash.bashrc
 
 case ":$PATH:" in
     *":$HOME/.local/bin:"*) ;;

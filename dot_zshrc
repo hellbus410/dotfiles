@@ -1,4 +1,2 @@
-# ~/.zshrc
-# Delegate to ~/.config/zsh/.zshrc
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 [ -r "$ZDOTDIR/.zshrc" ] && . "$ZDOTDIR/.zshrc"

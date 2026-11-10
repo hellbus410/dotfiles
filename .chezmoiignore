@@ -1,3 +1,16 @@
+{{- if not (lookPath "bash") }}
+.bashrc
+.bash_profile
+.config/bash
+{{- end }}
+{{- if not (lookPath "zsh") }}
+.zshenv
+.zshrc
+.config/zsh
+{{- end }}
+{{- if and (not (lookPath "bash")) (not (lookPath "zsh")) }}
+.config/shell
+{{- end }}
 {{- if not (lookPath "foot") }}
 .config/foot
 {{- end }}

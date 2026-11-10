@@ -1,6 +1,3 @@
-# ~/.config/zsh/.zshrc
-# Interactive zsh configuration.
-
 for _f in env.sh aliases.sh functions.sh; do
     _path="${XDG_CONFIG_HOME:-$HOME/.config}/shell/$_f"
     [ -r "$_path" ] && . "$_path"
