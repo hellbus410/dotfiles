@@ -132,8 +132,8 @@ usage_count = true  # send an anonymous count when ZenNotes installs or updates:
 # action until you give it a key again or delete the line.
 [keymaps]
 "global.modeEdit" = "Mod+8"
-"global.modePreview" = "Mod+9"
 "global.modeSplit" = "Mod+E"
+"global.modePreview" = "Mod+9"
 "vim.leaderHideToTray" = ""  # unbound
 
 # --- All actions (defaults shown; uncomment + edit to override) ---
@@ -292,8 +292,8 @@ usage_count = true  # send an anonymous count when ZenNotes installs or updates:
 # reads as Space x t while Space is the leader). A sequence may not start
 # on a key the built-in leader uses. "" leaves a command with no key.
 [keymaps.commands]
-"view.toggle.connections" = "Leader b"
 "tab.close" = "Leader x"
+"view.toggle.connections" = "Leader b"
 
 # --- All commands (uncomment + add a key to bind one) ---
 # "note.new.quick" = ""  # Note: New Quick Note
