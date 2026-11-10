@@ -38,3 +38,9 @@ elif command -v batcat >/dev/null 2>&1; then
     export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
     export GROFF_NO_SGR=1
 fi
+
+if [ -n "$SSH_CONNECTION" ] && [ -z "$TMUX" ] && [ -t 1 ]; then
+    if command -v tmux >/dev/null 2>&1; then
+        exec tmux new-session -A -s master
+    fi
+fi
