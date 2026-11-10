@@ -168,3 +168,42 @@ unpack() {
         return "$status"
     fi
 }
+
+rdp() {
+    if ! command -v wlfreerdp >/dev/null 2>&1; then
+        printf 'rdp: wlfreerdp command not found in PATH\n' >&2
+        return 127
+    fi
+
+    if [ $# -eq 0 ]; then
+        printf 'Usage: rdp <host[:port]> [username] [extra_args...]\n' >&2
+        return 1
+    fi
+
+    case "$1" in
+        /*|-*)
+            command wlfreerdp "$@"
+            return $?
+            ;;
+    esac
+
+    local host="$1"
+    local user="${2:-$USER}"
+
+    if [ $# -ge 2 ]; then
+        shift 2
+    else
+        shift 1
+    fi
+
+    command wlfreerdp \
+        /v:"$host" \
+        /u:"$user" \
+        /dynamic-resolution \
+        +clipboard \
+        /sound:sys:pulse \
+        /network:auto \
+        +auto-reconnect \
+        "$@"
+}
+
