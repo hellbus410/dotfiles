@@ -34,14 +34,6 @@
                 "move": true
             }
         },
-        "term": {
-            "foot": {
-                "enable": true,
-                "match": [{ "class": "foot-scratch" }],
-                "command": ["foot", "--app-id", "foot-scratch"],
-                "move": true
-            }
-        },
         "music": {
             "spotify": { "command": ["spotify"] },
             "feishin": { "enable": false }
