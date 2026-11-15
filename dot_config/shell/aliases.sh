@@ -19,6 +19,7 @@ alias nob='nh os build'
 alias nobu='nh os build -u'
 
 alias v='nvim'
+alias e='emacsclient -t -a ""'
 alias g='git'
 alias l='lazygit'
 alias k='kubectl'
