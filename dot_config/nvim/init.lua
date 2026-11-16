@@ -103,13 +103,15 @@ vim.keymap.set("n", "<leader>td", function()
 end, { desc = "Toggle diagnostics" })
 
 -- Hyprland's Lua API (the `hl` global) for its config files; stable path to the stubs Hyprland ships
-vim.lsp.config("lua_ls", {
-    settings = {
-        Lua = {
-            workspace = { library = { "/run/current-system/sw/share/hypr/stubs" } },
+if vim.uv.fs_stat("/run/current-system/sw/share/hypr/stubs") then
+    vim.lsp.config("lua_ls", {
+        settings = {
+            Lua = {
+                workspace = { library = { "/run/current-system/sw/share/hypr/stubs" } },
+            },
         },
-    },
-})
+    })
+end
 
 -- Only enable servers whose binary is installed (they come from nix-conf's packages.nix).
 -- Missing ones are reported once; the list of reported names lives in stdpath("state").
@@ -160,6 +162,7 @@ end
 vim.lsp.enable(available)
 
 -- Rewritten every start, so a server that gets installed and later removed is reported again
+vim.fn.mkdir(vim.fn.stdpath("state"), "p")
 vim.fn.writefile(missing, reported_file)
 if #newly_missing > 0 then
     vim.schedule(function()
@@ -182,9 +185,11 @@ local parsers = {
     "json",
 }
 
-local install = require("nvim-treesitter").install(parsers)
-if #vim.api.nvim_list_uis() == 0 then
-    install:wait(300000)
+if vim.fn.executable("tree-sitter") == 1 and (vim.fn.executable("cc") == 1 or vim.fn.executable("gcc") == 1) then
+    local install = require("nvim-treesitter").install(parsers)
+    if #vim.api.nvim_list_uis() == 0 then
+        install:wait(300000)
+    end
 end
 
 vim.treesitter.language.register("terraform", { "opentofu", "opentofu-vars" })

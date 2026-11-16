@@ -5,4 +5,6 @@
 set -euo pipefail
 
 nvim --headless -c "lua vim.pack.update(nil, { target = 'lockfile', force = true })" -c qa
-nvim --headless -c "lua require('nvim-treesitter').update():wait(300000)" -c qa
+if command -v tree-sitter >/dev/null 2>&1 && (command -v cc >/dev/null 2>&1 || command -v gcc >/dev/null 2>&1); then
+    nvim --headless -c "lua require('nvim-treesitter').update():wait(300000)" -c qa
+fi
