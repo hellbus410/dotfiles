@@ -10,9 +10,30 @@
 {{- end }}
 {{- if and (not (lookPath "bash")) (not (lookPath "zsh")) }}
 .config/shell
+check-shell-tools.sh
+{{- end }}
+{{- if not (lookPath "1password") }}
+.config/1Password
+{{- end }}
+{{- if not (lookPath "atuin") }}
+.config/atuin
+{{- end }}
+{{- if not (lookPath "emacs") }}
+.config/doom
+sync-doom.sh
+{{- end }}
+{{- if not (lookPath "fcitx5") }}
+.config/fcitx5
 {{- end }}
 {{- if not (lookPath "foot") }}
 .config/foot
+.config/caelestia/templates/foot.ini
+{{- end }}
+{{- if not (lookPath "gh-dash") }}
+.config/gh-dash
+{{- end }}
+{{- if not (lookPath "git") }}
+.config/git
 {{- end }}
 {{- if not (lookPath "niri") }}
 .config/niri
@@ -23,12 +44,42 @@
 {{- end }}
 {{- if not (lookPath "kitty") }}
 .config/kitty
+.config/caelestia/templates/kitty.conf
+{{- end }}
+{{- if not (lookPath "nvim") }}
+.config/nvim
+install-nvim-plugins.sh
+{{- end }}
+{{- if or (not (lookPath "nvim")) (not (lookPath "foot")) }}
+.local/share/applications/nvim-foot.desktop
+{{- end }}
+{{- if not (lookPath "starship") }}
+.config/starship.toml
+{{- end }}
+{{- if not (lookPath "tmux") }}
+.config/tmux
+install-tmux-plugins.sh
 {{- end }}
 {{- if not (lookPath "yazi") }}
 .config/yazi
 {{- end }}
+{{- if not (lookPath "zathura") }}
+.config/zathura
+{{- end }}
+{{- if and (not (lookPath "zennotes-desktop")) (not (lookPath "zennotes")) (not (lookPath "zn")) }}
+.config/zennotes
+{{- end }}
 {{- if not (lookPath "swayimg") }}
 .config/swayimg
+{{- end }}
+{{- if not (lookPath "clash-verge") }}
+.local/share/io.github.clash-verge-rev.clash-verge-rev
+{{- end }}
+{{- if and (not (lookPath "Hyprland")) (not (lookPath "niri")) }}
+.config/mimeapps.list
+.config/user-dirs.dirs
+create-user-dirs.sh
+.local/share/applications/nvim-foot.desktop
 {{- end }}
 {{- if not (lookPath "Hyprland") }}
 .config/hypr
@@ -42,6 +93,7 @@
 {{- if not (lookPath "caelestia") }}
 .config/caelestia/cli.json
 .config/caelestia/shell.json
+.config/caelestia/templates
 {{- end }}
 {{- $chassis := "" }}
 {{- if lookPath "hostnamectl" }}
