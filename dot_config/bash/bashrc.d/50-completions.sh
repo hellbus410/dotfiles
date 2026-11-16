@@ -1,6 +1,9 @@
 # Completions for aliases.
 
 if command -v kubectl >/dev/null 2>&1; then
+    if ! declare -F __start_kubectl >/dev/null 2>&1; then
+        _completion_loader kubectl 2>/dev/null || eval "$(kubectl completion bash 2>/dev/null)"
+    fi
     complete -o default -F __start_kubectl k 2>/dev/null || true
 fi
 if command -v tofu >/dev/null 2>&1; then

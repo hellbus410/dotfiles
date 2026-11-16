@@ -3,6 +3,9 @@ case $- in
       *) return ;;
 esac
 
+[ -n "${__USER_BASHRC_SOURCED:-}" ] && return
+__USER_BASHRC_SOURCED=1
+
 [ -r /etc/bashrc ] && . /etc/bashrc
 [ -r /etc/bash.bashrc ] && . /etc/bash.bashrc
 
