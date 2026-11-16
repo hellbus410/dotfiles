@@ -11,10 +11,12 @@ case ":$PATH:" in
     *) PATH="$HOME/.local/bin:$PATH" ;;
 esac
 
-case ":$PATH:" in
-    *":${XDG_CONFIG_HOME:-$HOME/.config}/emacs/bin:"*) ;;
-    *) PATH="${XDG_CONFIG_HOME:-$HOME/.config}/emacs/bin:$PATH" ;;
-esac
+if [ -d "${XDG_CONFIG_HOME:-$HOME/.config}/emacs/bin" ]; then
+    case ":$PATH:" in
+        *":${XDG_CONFIG_HOME:-$HOME/.config}/emacs/bin:"*) ;;
+        *) PATH="${XDG_CONFIG_HOME:-$HOME/.config}/emacs/bin:$PATH" ;;
+    esac
+fi
 export PATH
 
 if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
