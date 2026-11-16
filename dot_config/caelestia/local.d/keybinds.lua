@@ -3,7 +3,7 @@
 -- "none" = nothing on that key.
 
 -- Apps
-hl.bind("SUPER + ALT + Return", require("utils.functions").toggle("term"))                                -- default: none | niri: Mod+ALT+Return
+hl.bind("SUPER + ALT + Return", hl.dsp.exec_cmd("foot"))                                                   -- default: none | niri: Mod+ALT+Return
 hl.bind("SUPER + P", require("utils.functions").toggle("1password"))                                      -- default: pin window | niri: Mod+P
 hl.bind("SUPER + ALT + B", hl.dsp.exec_cmd("qutebrowser"))                                              -- default: none | niri: Mod+ALT+B
 hl.bind("SUPER + ALT + E", hl.dsp.exec_cmd("nautilus"))                                               -- default: none | niri: none (SUPER + E is nautilus, kbFileExplorer)

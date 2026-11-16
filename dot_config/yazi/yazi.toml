@@ -4,3 +4,14 @@
 open = [
 	{ run = "xdg-open %s1", desc = "Open", for = "linux", orphan = true },
 ]
+extract = [
+	{ run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+	{ run = 'ouch decompress "$@"', desc = "Extract with ouch", for = "unix" },
+]
+
+[open]
+    prepend_rules = [
+        { url = "*.rar", use = [ "extract", "reveal" ] },
+        { mime = "application/vnd.rar", use = [ "extract", "reveal" ] },
+        { mime = "application/x-rar*", use = [ "extract", "reveal" ] },
+    ]

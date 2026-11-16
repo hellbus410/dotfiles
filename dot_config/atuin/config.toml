@@ -1,0 +1,11 @@
+auto_sync = false
+update_check = false
+style = "compact"
+inline_height = 20
+show_preview = true
+enter_accept = false
+workspaces = true
+filter_mode = "global"
+
+[ui]
+columns = ["datetime", "duration", "directory", "command"]

@@ -104,12 +104,6 @@
                 },
                 {
                     "flags": "",
-                    "icon": "terminal",
-                    "name": "term",
-                    "regex": ""
-                },
-                {
-                    "flags": "",
                     "icon": "music_cast",
                     "name": "music",
                     "regex": ""

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Syncs Doom Emacs modules, packages, and envvars when init.el or packages.el changes.
+# Re-runs whenever init.el or packages.el changes:
+# init.el: {{ include "dot_config/doom/init.el" | sha256sum }}
+# packages.el: {{ include "dot_config/doom/packages.el" | sha256sum }}
+set -euo pipefail
+
+doom_bin="${XDG_CONFIG_HOME:-$HOME/.config}/emacs/bin/doom"
+if [[ -x "$doom_bin" ]]; then
+    "$doom_bin" sync
+fi
