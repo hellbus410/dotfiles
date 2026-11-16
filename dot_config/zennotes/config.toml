@@ -24,7 +24,7 @@ which_key_hint_mode = "sticky"  # timed | sticky
 which_key_hint_timeout_ms = 900  # how long timed hints stay visible (ms)
 
 [search]
-backend = "ripgrep"  # auto | builtin | ripgrep | fzf
+backend = "auto"  # auto | builtin | ripgrep | fzf
 ripgrep_path = ""  # absolute path to ripgrep; empty = look on $PATH
 fzf_path = ""  # absolute path to fzf; empty = look on $PATH
 tagged_blocks = true  # with a #tag in Search notes, list the tagged blocks under each note
