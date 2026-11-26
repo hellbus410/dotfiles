@@ -1,0 +1,12 @@
+git:
+  overrideGpg: true
+{{- if lookPath "emacsclient" }}
+os:
+  edit: "ec -- {{`{{filename}}`}}"
+  editAtLine: "ec -- +{{`{{line}}`}} {{`{{filename}}`}}"
+  editAtLineAndWait: "ec -- +{{`{{line}}`}} {{`{{filename}}`}}"
+  openDirInEditor: "ec -- {{`{{dir}}`}}"
+{{- else if lookPath "nvim" }}
+os:
+  editPreset: "nvim"
+{{- end }}

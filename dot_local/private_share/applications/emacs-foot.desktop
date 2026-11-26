@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Emacs (foot)
+Comment=Emacs client in its own foot window; xdg-open ignores Terminal=true
+Exec=foot -e emacsclient -t -a "" %F
+Icon=emacs
+Terminal=false
+NoDisplay=true
+MimeType=text/plain;

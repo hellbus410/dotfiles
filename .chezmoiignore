@@ -20,7 +20,11 @@ check-shell-tools.sh
 {{- end }}
 {{- if not (lookPath "emacs") }}
 .config/doom
+.local/bin/ec
 sync-doom.sh
+{{- end }}
+{{- if or (not (lookPath "emacs")) (not (lookPath "foot")) }}
+.local/share/applications/emacs-foot.desktop
 {{- end }}
 {{- if not (lookPath "fcitx5") }}
 .config/fcitx5
@@ -34,6 +38,9 @@ sync-doom.sh
 {{- end }}
 {{- if not (lookPath "git") }}
 .config/git
+{{- end }}
+{{- if not (lookPath "lazygit") }}
+.config/lazygit
 {{- end }}
 {{- if not (lookPath "niri") }}
 .config/niri
@@ -79,6 +86,7 @@ install-tmux-plugins.sh
 .config/mimeapps.list
 .config/user-dirs.dirs
 create-user-dirs.sh
+.local/share/applications/emacs-foot.desktop
 .local/share/applications/nvim-foot.desktop
 {{- end }}
 {{- if not (lookPath "Hyprland") }}

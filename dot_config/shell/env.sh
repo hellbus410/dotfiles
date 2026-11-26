@@ -25,17 +25,26 @@ elif [ -x /opt/homebrew/bin/brew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-if command -v nvim >/dev/null 2>&1; then
+if command -v emacsclient >/dev/null 2>&1; then
+    export EDITOR=ec
+    export VISUAL=ec
+elif command -v nvim >/dev/null 2>&1; then
     export EDITOR=nvim
     export VISUAL=nvim
-    export SUDO_EDITOR=nvim
 elif command -v vim >/dev/null 2>&1; then
     export EDITOR=vim
     export VISUAL=vim
-    export SUDO_EDITOR=vim
 else
     export EDITOR=vi
     export VISUAL=vi
+fi
+
+if command -v nvim >/dev/null 2>&1; then
+    export SUDO_EDITOR=nvim
+elif command -v vim >/dev/null 2>&1; then
+    export SUDO_EDITOR=vim
+else
+    export SUDO_EDITOR=vi
 fi
 
 if command -v bat >/dev/null 2>&1; then

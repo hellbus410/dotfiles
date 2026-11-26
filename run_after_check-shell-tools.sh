@@ -26,7 +26,10 @@ check_tool "atuin"    "atuin"    "Shell history search (Ctrl+R)"
 check_tool "fzf"      "fzf"      "Fuzzy finder (Ctrl+T, Alt+C)"
 check_tool "zoxide"   "zoxide"   "Fast directory navigation (z)"
 check_tool "direnv"   "direnv"   "Per-directory environment loader"
-check_tool "nvim"     "nvim"     "Default editor (\$EDITOR / \$VISUAL / v alias)"
+if command -v Hyprland >/dev/null 2>&1 || command -v niri >/dev/null 2>&1; then
+    check_tool "emacsclient" "emacs" "Primary workstation editor (\$EDITOR / \$VISUAL / e, ec, mg)"
+fi
+check_tool "nvim"     "nvim"     "Fallback & server editor (\$SUDO_EDITOR / v alias)"
 
 if ! command -v bat >/dev/null 2>&1 && ! command -v batcat >/dev/null 2>&1; then
     missing="${missing}

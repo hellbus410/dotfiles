@@ -207,3 +207,10 @@ rdp() {
         "$@"
 }
 
+mg() {
+    local dir="${1:-$PWD}"
+    local escaped
+    escaped=$(printf '%s' "$dir" | sed 's/\\/\\\\/g; s/"/\\"/g')
+    emacsclient -t -a "" --eval "(magit-status \"$escaped\")"
+}
+

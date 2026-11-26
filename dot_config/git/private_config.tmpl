@@ -20,7 +20,9 @@
 	name = Yury A.
 	email = Atnazhev.Yu@pm.me
 [core]
-{{- if lookPath "nvim" }}
+{{- if lookPath "emacsclient" }}
+	editor = ec
+{{- else if lookPath "nvim" }}
 	editor = nvim
 {{- else if lookPath "vim" }}
 	editor = vim
@@ -36,7 +38,11 @@
 {{- end }}
 [merge]
 	conflictStyle = zdiff3
-{{- if lookPath "nvim" }}
+{{- if lookPath "emacsclient" }}
+	tool = ediff
+[mergetool "ediff"]
+	cmd = emacsclient -t -a "" --eval "(ediff-merge-files-with-ancestor \"$LOCAL\" \"$REMOTE\" \"$BASE\" nil \"$MERGED\")"
+{{- else if lookPath "nvim" }}
 	tool = nvimdiff
 {{- else if lookPath "vim" }}
 	tool = vimdiff

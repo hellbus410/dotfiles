@@ -5,7 +5,7 @@ return {
     -- Apps
     terminal                   = "foot -e tmux new -A -s master",
     browser                    = "zen-beta",
-    editor                     = "foot -e nvim",
+    editor                     = "foot -e ec",
     fileExplorer               = "foot -e yazi",
     audioSettings              = "pwvucontrol",
 
