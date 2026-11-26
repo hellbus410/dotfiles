@@ -1,90 +1,115 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
+(setq doom-theme 'doom-vibrant
+      display-line-numbers-type 'relative
+      scroll-margin 8
+      hscroll-margin 8
+      evil-split-window-below t
+      evil-vsplit-window-right t
+      org-directory "~/notes/")
 
+(when (or (executable-find "cc") (executable-find "gcc"))
+  (setq treesit-auto-install-grammar 'always))
 
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets. It is optional.
-;; (setq user-full-name "John Doe"
-;;       user-mail-address "john@doe.com")
+(after! magit
+  (setq magit-diff-refine-hunk 'all))
 
-;; Doom exposes five (optional) variables for controlling fonts in Doom:
-;;
-;; - `doom-font' -- the primary font to use
-;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
-;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;; - `doom-symbol-font' -- for symbols
-;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
-;;
-;; See 'C-h v doom-font' for documentation and more examples of what they
-;; accept. For example:
-;;
-;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
-;;
-;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
-;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
-;; refresh your font settings. If Emacs still can't find your font, it likely
-;; wasn't installed correctly. Font issues are rarely Doom issues!
+(after! ediff
+  (setq ediff-diff-options ""))
 
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
-;; Specify both a dark and light theme, like so and Doom will choose which one
-;; to load based on your system light/dark setting:
-;;
-;;   (setq doom-theme '(doom-one   . doom-one-light))   ; (DARK . LIGHT)
-;;
-;; If you want more pro-active theme switching based on OS light/dark mode, look
-;; up the `auto-dark' package.
+(after! diff-hl
+  (setq diff-hl-show-hunk-function #'diff-hl-show-hunk-inline)
+  (unless (display-graphic-p)
+    (diff-hl-margin-mode +1))
+  (add-hook! 'after-make-frame-functions
+    (defun +vc-gutter-enable-margin-in-tty-h (frame)
+      (unless (display-graphic-p frame)
+        (diff-hl-margin-mode +1)))))
 
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
+(after! diff-hl-margin
+  (setq diff-hl-margin-symbols-alist
+        '((insert . "│")
+          (delete . "▁")
+          (change . "│")
+          (unknown . "?")
+          (ignored . "i"))))
 
-;; Scroll
-(setq scroll-margin 8)
-(setq hscroll-margin 8)
+(map! :leader
+      (:prefix "g"
+       :desc "Preview hunk diff" "d" #'diff-hl-show-hunk)
+      (:prefix "p"
+       (:prefix ("v" . "direnv")
+        :desc "Allow .envrc"     "a" #'envrc-allow
+        :desc "Deny .envrc"      "d" #'envrc-deny
+        :desc "Reload .envrc"    "r" #'envrc-reload
+        :desc "Show envrc log"   "l" #'envrc-show-log)))
 
-;; Window splits
-(setq evil-split-window-below t)
-(setq evil-vsplit-window-right t)
+(after! nix-mode
+  (set-eglot-client! '(nix-mode nix-ts-mode) '("nixd")))
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/notes/")
+(add-to-list 'auto-mode-alist '("\\.tofuvars\\'" . terraform-mode))
+(after! terraform-mode
+  (when (executable-find "tofu")
+    (setq +terraform-runner "tofu")))
 
+(after! dockerfile-ts-mode
+  (add-hook 'dockerfile-ts-mode-local-vars-hook #'lsp! 'append))
 
-;; Whenever you reconfigure a package, make sure to wrap your config in an
-;; `with-eval-after-load' block, otherwise Doom's defaults may override your
-;; settings. E.g.
-;;
-;;   (with-eval-after-load 'PACKAGE
-;;     (setq x y))
-;;
-;; The exceptions to this rule:
-;;
-;;   - Setting file/directory variables (like `org-directory')
-;;   - Setting variables which explicitly tell you to set them before their
-;;     package is loaded (see 'C-h v VARIABLE' to look them up).
-;;   - Setting doom variables (which start with 'doom-' or '+').
-;;
-;; Here are some additional functions/macros that will help you configure Doom.
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;; Alternatively, use `C-h o' to look up a symbol (functions, variables, faces,
-;; etc).
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
+(use-package! conf-mode
+  :defer t
+  :init
+  (when (modulep! :tools tree-sitter)
+    (set-tree-sitter! 'conf-toml-mode 'toml-ts-mode 'toml))
+  :config
+  (add-hook 'conf-toml-mode-local-vars-hook #'lsp! 'append)
+  (set-eglot-client! '(conf-toml-mode toml-ts-mode) '("taplo" "lsp" "stdio")))
+
+(after! toml-ts-mode
+  (add-hook 'toml-ts-mode-local-vars-hook #'lsp! 'append))
+
+(define-derived-mode ansible-yaml-mode yaml-mode "Ansible[YAML]")
+(define-derived-mode ansible-yaml-ts-mode yaml-ts-mode "Ansible[YAML]"
+  (setq-local indent-line-function #'yaml-indent-line))
+
+(define-derived-mode docker-compose-yaml-mode yaml-mode "Compose[YAML]")
+(define-derived-mode docker-compose-yaml-ts-mode yaml-ts-mode "Compose[YAML]"
+  (setq-local indent-line-function #'yaml-indent-line))
+
+(when (modulep! :tools tree-sitter)
+  (set-tree-sitter! 'ansible-yaml-mode 'ansible-yaml-ts-mode 'yaml)
+  (set-tree-sitter! 'docker-compose-yaml-mode 'docker-compose-yaml-ts-mode 'yaml))
+
+(dolist (entry '(("/roles/.*/\\(?:tasks\\|handlers\\|defaults\\|vars\\|meta\\)/.*\\.ya?ml\\'" . ansible-yaml-mode)
+                 ("/playbooks/.*\\.ya?ml\\'" . ansible-yaml-mode)
+                 ("/\\(?:host_vars\\|group_vars\\|inventory\\)/.*\\.ya?ml\\'" . ansible-yaml-mode)
+                 ("/\\(?:docker-\\)?compose\\(?:\\..*\\)?\\.ya?ml\\'" . docker-compose-yaml-mode)))
+  (add-to-list 'auto-mode-alist entry))
+
+(dolist (hook '(ansible-yaml-mode-local-vars-hook ansible-yaml-ts-mode-local-vars-hook))
+  (add-hook hook #'ansible-mode)
+  (add-hook hook #'ansible-doc-mode)
+  (add-hook hook #'lsp! 'append))
+
+(dolist (hook '(docker-compose-yaml-mode-local-vars-hook docker-compose-yaml-ts-mode-local-vars-hook))
+  (add-hook hook #'lsp! 'append))
+
+(set-eglot-client! '((ansible-yaml-mode :language-id "ansible")
+                     (ansible-yaml-ts-mode :language-id "ansible"))
+                   '("ansible-language-server" "--stdio"))
+
+(set-eglot-client! '((docker-compose-yaml-mode :language-id "dockercompose")
+                     (docker-compose-yaml-ts-mode :language-id "dockercompose"))
+                   '("docker-compose-langserver" "--stdio"))
+
+(setq-default
+ eglot-workspace-configuration
+ `(:yaml (:schemas (:kubernetes ["/*.k8s.yaml"
+                                 "/*.k8s.yml"
+                                 "/k8s/**/*.yaml"
+                                 "/k8s/**/*.yml"
+                                 "/manifests/**/*.yaml"
+                                 "/manifests/**/*.yml"
+                                 "/clusters/**/*.yaml"
+                                 "/clusters/**/*.yml"]))
+   ,@(when (file-directory-p "/run/current-system/sw/share/hypr/stubs")
+       '(:Lua (:workspace (:library ["/run/current-system/sw/share/hypr/stubs"]))))))
