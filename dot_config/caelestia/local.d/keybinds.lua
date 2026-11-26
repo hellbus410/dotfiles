@@ -48,11 +48,11 @@ hl.bind("CTRL + SUPER + SHIFT + J", hl.dsp.window.move({ monitor = "down" }))
 hl.bind("CTRL + SUPER + SHIFT + K", hl.dsp.window.move({ monitor = "up" }))
 hl.bind("CTRL + SUPER + SHIFT + L", hl.dsp.window.move({ monitor = "right" }))
 
--- Shell kill and restart
+-- Shell stop and restart (managed as caelestia.service under graphical-session.target)
 hl.unbind("CTRL + SUPER + SHIFT + R")
 hl.unbind("CTRL + SUPER + ALT + R")
-hl.bind("CTRL + SUPER + SHIFT + R", hl.dsp.exec_cmd("caelestia shell -k"), { release = true })
-hl.bind("CTRL + SUPER + ALT + R", hl.dsp.exec_cmd("caelestia shell -r"), { release = true })
+hl.bind("CTRL + SUPER + SHIFT + R", hl.dsp.exec_cmd("systemctl --user stop caelestia.service"), { release = true })
+hl.bind("CTRL + SUPER + ALT + R", hl.dsp.exec_cmd("systemctl --user restart caelestia.service"), { release = true })
 
 -- Screenshots
 hl.bind("SUPER + SHIFT + S", hl.dsp.global("caelestia:screenshotFreezeClip"))
