@@ -55,7 +55,6 @@ sync-doom.sh
 {{- end }}
 {{- if not (lookPath "nvim") }}
 .config/nvim
-install-nvim-plugins.sh
 {{- end }}
 {{- if or (not (lookPath "nvim")) (not (lookPath "foot")) }}
 .local/share/applications/nvim-foot.desktop
