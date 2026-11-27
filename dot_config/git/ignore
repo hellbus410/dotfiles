@@ -1,6 +1,9 @@
 # Editor backup files.
 *~
 
+# direnv local cache and flake GC-root symlinks.
+.direnv/
+
 # Claude Code: personal settings and notes, not meant to be shared.
 .claude/settings.local.json
 CLAUDE.local.md
