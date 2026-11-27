@@ -49,8 +49,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.tofuvars\\'" . terraform-mode))
 (after! terraform-mode
-  (when (executable-find "tofu")
-    (setq +terraform-runner "tofu")))
+  (setq +terraform-runner "tofu"))
 
 (after! dockerfile-ts-mode
   (add-hook 'dockerfile-ts-mode-local-vars-hook #'lsp! 'append))
