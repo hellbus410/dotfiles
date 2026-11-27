@@ -25,9 +25,9 @@ check_tool "starship" "starship" "Prompt renderer"
 check_tool "atuin"    "atuin"    "Shell history search (Ctrl+R)"
 check_tool "fzf"      "fzf"      "Fuzzy finder (Ctrl+T, Alt+C)"
 check_tool "zoxide"   "zoxide"   "Fast directory navigation (z)"
-check_tool "direnv"   "direnv"   "Per-directory environment loader"
 if command -v Hyprland >/dev/null 2>&1 || command -v niri >/dev/null 2>&1; then
-    check_tool "emacsclient" "emacs" "Primary workstation editor (\$EDITOR / \$VISUAL / e, ec, mg)"
+    check_tool "direnv"      "direnv" "Per-directory environment loader"
+    check_tool "emacsclient" "emacs"  "Primary workstation editor (\$EDITOR / \$VISUAL / e, ec, mg)"
 fi
 check_tool "nvim"     "nvim"     "Fallback & server editor (\$SUDO_EDITOR / v alias)"
 
@@ -38,12 +38,6 @@ fi
 
 check_tool "eza"      "eza"      "Modern file listing aliases (ell, ela)"
 check_tool "lazygit"  "lazygit"  "Git terminal UI (l alias)"
-check_tool "kubectl"  "kubectl"  "Kubernetes CLI (k alias and completions)"
-
-if ! command -v tofu >/dev/null 2>&1 && ! command -v terraform >/dev/null 2>&1; then
-    missing="${missing}
-  - $(printf '%-14s' "tofu/terraform") OpenTofu or Terraform CLI (tf alias and completions)"
-fi
 
 if [ -n "$missing" ]; then
     if [ "$has_bash" -eq 1 ] && [ "$has_zsh" -eq 1 ]; then
