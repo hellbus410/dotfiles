@@ -23,11 +23,7 @@ alias e='emacsclient -t -a ""'
 alias g='git'
 alias l='lazygit'
 alias k='kubectl'
-if command -v tofu >/dev/null 2>&1; then
-    alias tf='tofu'
-elif command -v terraform >/dev/null 2>&1; then
-    alias tf='terraform'
-fi
+alias tf='tofu'
 
 # The trailing space makes the next word alias-expanded too: `sudo ll`.
 alias sudo='sudo '
