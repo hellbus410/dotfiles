@@ -142,6 +142,15 @@ format = "[$symbol$state]($style) "
 symbol = " "
 style = "bold cyan"
 
+[direnv]
+disabled = false
+format = "[$symbol$allowed]($style) "
+symbol = "󱁿 "
+style = "bold bright-yellow"
+allowed_msg = ""
+not_allowed_msg = "! "
+denied_msg = "✘ "
+
 [fill]
 symbol = "‾"
 style = "bright-black"
